@@ -1,26 +1,40 @@
 # Team2-CobraKai-Project2
 Team members: Daniel Coombs (lead), Michael Lee, Fred Brume, John Maurer
 
-## Project Synopsis: 
-This is a web application to listen to music, search and store songs in a list, upload audio, and journal any personal experience or thoughts about a song.
+## Scope: 
 
-## MVP:
-A user will have the following functionalities:
-* Log in or create an account.
-* Reset password.
-* Create playlist(s).
-* Search for available music.
-* Add or remove songs from a playlist.
-* Play or pause music.
-* Create, edit, remove, or view a journal entry for a song.
-* Upload any audio.
-* Log out.
+The Cobra Kai application is a distributed file sharing system marketed as a music media platform as a service which allows users to store and manage their digitial audio media in the cloud.  The platform offers cloud storage of a customers digital media as well as the means to stream it after authenticating into the service.  Clients can organize their libraries as they see fit and even create playlists that they themselves orchestrate opposed to services like youtube that do so based on viewer history.  Tying the client to an authentication protocol also protects stakeholders from the legal environment, protecting them from copyright infringement and mitigating unauthorized distribution and peer-to-peer file sharing.  
 
-## Technologies To Be Used:
-* Azure DevOps.
-* Azure Website Services.
-* Git.
-* Sonar Cloud.
-* Visual Studio 2019 (C#, MSTest).
+## Features:
 
-More technologies are to be determined at this time in design.
+* Authentication wall that tightly couples a clients music library to their personal account
+* Playlist orchestration allowing clients to customize how they experience their music
+* Visually interactable library allowing the client to manage their music
+* Media player allowing the client playback their uploaded music
+* Private journal blog where the client may record their thoughts while listening to their favorite music
+
+### Technological Requirements:
+
+* Azure DevOps
+* Azure
+* Git
+* Sonar Cloud
+* Entity Framework
+* TSQL
+* Visual Studio 2019 (C#, NUnit)
+
+## Stakeholders/Users
+
+### Primary Users
+
+* Music goes of all ages
+
+### Primary Stakeholders
+
+* Project investors
+* Partners and Developers
+* Customers
+
+### Additional Stakeholders
+
+* Music IP Owners
