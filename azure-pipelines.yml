@@ -11,7 +11,17 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  pathtosolution: 'Project2Solution'
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: $(pathtosolution)
+
+- script: dotnet test 
+    --configuration $(buildConfiguration)
+    --no-build
+  workingDirectory: $(pathtosolution)
+  displayName: 'dotnet test'
+
+  
