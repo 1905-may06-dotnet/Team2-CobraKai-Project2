@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Scaffold.Test.Domain {
+namespace Project.Test.Domain {
 
     public class ListEntry {
 
