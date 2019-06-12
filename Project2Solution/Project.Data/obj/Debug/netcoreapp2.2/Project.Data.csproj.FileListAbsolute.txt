@@ -1,0 +1,9 @@
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Data.deps.json
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Data.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Data.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.csprojAssemblyReference.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.csproj.CoreCompileInputs.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.AssemblyInfoInputs.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.AssemblyInfo.cs
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.pdb
