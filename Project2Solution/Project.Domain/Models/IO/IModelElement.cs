@@ -10,6 +10,8 @@ namespace Project.Domain.Models.IO {
 
 	    public abstract IModelElement < T > Bind ( ref IModelElement < T > element );
 
+        public IModelElement ( IModelElement < T > element ) { _resource = element._resource; }
+
     }
 
 }

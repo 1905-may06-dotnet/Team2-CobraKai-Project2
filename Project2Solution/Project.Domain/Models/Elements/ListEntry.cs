@@ -51,6 +51,43 @@ namespace Project.Domain.Models.Elements {
 
         }
 
+        [ MethodImpl ( MethodImplOptions.AggressiveInlining ) ]
+        public IO.IModelElement < Data.Entities.ListEntry > Bind ( ref IO.IModelElement < Data.Entities.Journal > element ) {
+
+            _resource.PlayListId = element.Record.Id;
+            _resource.SongId     = element.Record.SongId;
+
+            return this;
+
+        }
+
+        [ MethodImpl ( MethodImplOptions.AggressiveInlining ) ]
+        public IO.IModelElement < Data.Entities.ListEntry > Bind ( ref IO.IModelElement < Data.Entities.MusicList > element ) {
+
+            _resource.MusicListId = element.Id;
+
+            return this;
+
+        }
+
+        [ MethodImpl ( MethodImplOptions.AggressiveInlining ) ]
+        public IO.IModelElement < Data.Entities.ListEntry > Bind ( ref IO.IModelElement < Data.Entities.Playlist > element ) {
+
+            _resource.PlayListId = element.Id;
+
+            return this;
+
+        }
+
+        [ MethodImpl ( MethodImplOptions.AggressiveInlining ) ]
+        public IO.IModelElement < Data.Entities.ListEntry > Bind ( ref IO.IModelElement < Data.Entities.Song > element ) {
+
+            _resource.SongId = element.Id;
+
+            return this;
+
+        }
+
         public override IO.IWrite < Data.Entities.ListEntry > Save () {
 
             lock ( _lock ) {
