@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {}
+    "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {}
   },
   "projects": {
-    "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
+    "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
+        "projectUniqueName": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
         "projectName": "Project.Data",
-        "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
-        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\obj\\",
+        "projectPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
+        "packagesPath": "C:\\Users\\jmau0\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jmau0\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -43,6 +43,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",

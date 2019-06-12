@@ -686,25 +686,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
-    "C:\\ProgramData\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\jmau0\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Network\\Project.Network.csproj",
+      "projectUniqueName": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Network\\Project.Network.csproj",
       "projectName": "Project.Network",
-      "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Network\\Project.Network.csproj",
-      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Network\\obj\\",
+      "projectPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Network\\Project.Network.csproj",
+      "packagesPath": "C:\\Users\\jmau0\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Network\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\ProgramData\\Xamarin\\NuGet\\",
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jmau0\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
