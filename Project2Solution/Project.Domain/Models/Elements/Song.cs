@@ -68,7 +68,6 @@ namespace Project.Domain.Models.Elements {
                         _resource.Journals    = local.Journals;
                         _resource.ListEntries = local.ListEntries;
                         _resource.ReleaseDate = local.ReleaseDate;
-                        _resource.ReleaseDate = local.ReleaseDate;
                         _resource.Size        = local.Size;
                         _resource.Title       = local.Title;
 

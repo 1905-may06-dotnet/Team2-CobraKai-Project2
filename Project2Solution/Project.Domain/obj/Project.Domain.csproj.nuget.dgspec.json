@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {}
+    "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
+    "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
+        "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
         "projectName": "Project.Data",
-        "projectPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
-        "packagesPath": "C:\\Users\\jmau0\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\obj\\",
+        "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jmau0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -66,21 +66,21 @@
         }
       }
     },
-    "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {
+    "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj",
+        "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj",
         "projectName": "Project.Domain",
-        "projectPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj",
-        "packagesPath": "C:\\Users\\jmau0\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\obj\\",
+        "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jmau0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -94,8 +94,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
-                "projectPath": "C:\\Users\\jmau0\\Desktop\\Revature\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj"
+              "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
+                "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj"
               }
             }
           }

@@ -8,6 +8,7 @@ namespace Project.Domain.Models {
 
     public class ListEntries : IModels < Elements.ListEntry, Elements.QueryListEntry > {
 
+        //
         protected override ListEntry Read ( QueryListEntry entityArgs ) {
 
             using ( var context = new Project.Data.CobraKaiDbContext () ) {
