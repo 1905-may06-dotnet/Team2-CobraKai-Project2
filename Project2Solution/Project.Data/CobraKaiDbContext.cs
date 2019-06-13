@@ -25,7 +25,7 @@ namespace Project.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer("Data Source=SILVERWEAPON\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Server=tcp:utadbserverdc.database.windows.net,1433;Initial Catalog=McGuffin;Persist Security Info=False;User ID=danielcoombs005;Password=Password123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
         }
 

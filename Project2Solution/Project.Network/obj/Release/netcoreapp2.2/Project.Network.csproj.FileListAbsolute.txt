@@ -6,3 +6,12 @@ C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.AssemblyInfo.cs
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.dll
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\bin\Release\netcoreapp2.2\Project.Network.deps.json
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\bin\Release\netcoreapp2.2\Project.Network.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\bin\Release\netcoreapp2.2\Project.Network.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.csprojAssemblyReference.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.csproj.CoreCompileInputs.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.AssemblyInfoInputs.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.AssemblyInfo.cs
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Release\netcoreapp2.2\Project.Network.pdb
