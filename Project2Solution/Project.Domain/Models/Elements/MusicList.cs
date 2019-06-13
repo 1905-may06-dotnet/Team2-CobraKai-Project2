@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Project.Domain.Models.Elements {
 
     public class QueryMusicList : EventArgs {
 
-        
+        public Guid Id      = Guid.Empty;
+        public Guid PersonId = Guid.Empty;
 
     }
 
@@ -30,6 +32,14 @@ namespace Project.Domain.Models.Elements {
         public IO.IModelElement < Data.Entities.MusicList > Bind ( ref IO.IModelElement < Data.Entities.Person > element ) {
 
             _resource.PersonId = element.Record.Id;
+
+            return this;
+
+        }
+
+        public IO.IModelElement < Data.Entities.MusicList > Bind ( ref IO.IModelElement < Data.Entities.Song > element ) {
+
+            _resource.ListEntries.Add ( new Project.Data.Entities.ListEntry { Song = element.Record, SongId = element.Record.Id } );
 
             return this;
 
