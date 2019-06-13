@@ -20,7 +20,18 @@ namespace Project.Domain.Models.Elements {
 
         public override IO.IModelElement < Data.Entities.MusicList > Bind ( ref IO.IModelElement < Data.Entities.MusicList > element ) {
 
-            throw new NotImplementedException ();
+            _resource.PersonId    = element.Record.PersonId;
+            _resource.ListEntries = element.Record.ListEntries;
+
+            return this;
+
+        }
+
+        public IO.IModelElement < Data.Entities.MusicList > Bind ( ref IO.IModelElement < Data.Entities.Person > element ) {
+
+            _resource.PersonId = element.Record.Id;
+
+            return this;
 
         }
 
@@ -39,7 +50,8 @@ namespace Project.Domain.Models.Elements {
 
                     } else {
 
-                        //Variable assignment here
+                        _resource.PersonId    = local.PersonId;
+                        _resource.ListEntries = local.ListEntries;
 
                         context.Update ( local );
 

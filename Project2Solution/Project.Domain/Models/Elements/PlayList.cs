@@ -6,7 +6,8 @@ namespace Project.Domain.Models.Elements {
 
     public class QueryPlayList : EventArgs {
 
-        
+        Guid Id       = Guid.Empty;
+        Guid PersonId = Guid.Empty;
 
     }
 
@@ -20,7 +21,20 @@ namespace Project.Domain.Models.Elements {
 
         public override IO.IModelElement < Data.Entities.Playlist > Bind ( ref IO.IModelElement < Data.Entities.Playlist > element ) {
 
-            throw new NotImplementedException ();
+            _resource.ListEntries = element.Record.ListEntries;
+            _resource.Person      = element.Record.Person;
+            _resource.PersonId    = element.Record.PersonId;
+
+            return this;
+
+        }
+
+        public IO.IModelElement < Data.Entities.Playlist > Bind ( ref IO.IModelElement < Data.Entities.Person > element ) {
+
+            _resource.Person      = element.Record;
+            _resource.PersonId    = element.Record.Id;
+
+            return this;
 
         }
 
@@ -39,7 +53,10 @@ namespace Project.Domain.Models.Elements {
 
                     } else {
 
-                        //Variable assignment here
+                        local.ListEntries = _resource.ListEntries;
+                        local.Person      = _resource.Person;
+                        local.PersonId    = _resource.PersonId;
+                        local.Title       = _resource.Title;
 
                         context.Update ( local );
 
