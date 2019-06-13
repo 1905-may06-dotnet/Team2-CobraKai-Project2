@@ -27,6 +27,9 @@ C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.dll
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.pdb
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.csproj.CopyComplete
+<<<<<<< HEAD
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.csprojAssemblyReference.cache
+=======
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Release\netcoreapp2.2\Project.Client.deps.json
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Release\netcoreapp2.2\Project.Client.runtimeconfig.json
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Release\netcoreapp2.2\Project.Client.runtimeconfig.dev.json
@@ -57,3 +60,4 @@ C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.pdb
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.csproj.CopyComplete
+>>>>>>> a088780098acd1a90f7c7fcfd5f51931a1890f61

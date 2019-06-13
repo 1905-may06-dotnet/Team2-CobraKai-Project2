@@ -23,7 +23,18 @@ namespace Project.Domain.Models.Elements {
 
     public class Song : IO.IWrite < Data.Entities.Song > {
 
-        public Song () { _resource = new Data.Entities.Song (); }
+        public Song () {
+
+            _resource = new Data.Entities.Song ();
+
+            _resource.Size        = 0;
+            _resource.Title       = string.Empty;
+            _resource.Genre       = string.Empty;
+            _resource.FilePath    = string.Empty;
+            _resource.Artist      = string.Empty;
+            _resource.ReleaseDate = DateTime.UtcNow.ToLongTimeString ();
+
+        }
 
         public Song ( Song song ) { _resource = song._resource; }
 
