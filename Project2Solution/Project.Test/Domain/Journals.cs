@@ -29,13 +29,13 @@ namespace Project.Test
 
         }*/
 
-        [Test]
+ /*       [Test]
         public void D_Delete()
         {
             unitTest.Delete();
 
             using (var context = new Project.Data.CobraKaiDbContext())
                 if (context.Journals.Find(unitTest.Id) == null) Assert.Pass(); Assert.Fail();
-        }
+        }*/
     }
 }

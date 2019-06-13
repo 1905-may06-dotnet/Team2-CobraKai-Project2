@@ -6,14 +6,14 @@ using System.Text;
 
 namespace Project.Test
 {
-    public class MusicList
+    public class PlayList
     {
-        static Project.Domain.Models.Elements.MusicList unitTest = new Project.Domain.Models.Elements.MusicList();
+        static Project.Domain.Models.Elements.PlayList unitTest = new Project.Domain.Models.Elements.PlayList();
 
         [Test]
         public void A_Create()
         {
-            unitTest = new Project.Domain.Models.Elements.MusicList();
+            unitTest = new Project.Domain.Models.Elements.PlayList();
             unitTest.Save();
             Assert.Pass();
         }
@@ -35,7 +35,7 @@ namespace Project.Test
             unitTest.Delete();
 
             using (var context = new Project.Data.CobraKaiDbContext())
-                if (context.MusicLists.Find(unitTest.Id) == null) Assert.Pass(); Assert.Fail();
+                if (context.Playlists.Find(unitTest.Id) == null) Assert.Pass(); Assert.Fail();
         }*/
     }
 }

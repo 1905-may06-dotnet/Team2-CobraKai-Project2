@@ -45,7 +45,7 @@ namespace Test.Domain {
 
         }
 
-       [Test]
+/*       [Test]
         public void D_Delete () {
 
             unitTest.Delete ();
@@ -53,7 +53,7 @@ namespace Test.Domain {
              using ( var context = new Project.Data.CobraKaiDbContext () )
                 if ( context.ListEntries.Find ( unitTest.Id ) == null ) Assert.Pass (); Assert.Fail ();
 
-        }
+        }*/
 
     }
 
