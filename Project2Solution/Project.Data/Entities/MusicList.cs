@@ -19,7 +19,7 @@ namespace Project.Data.Entities
 
         [InverseProperty("Songlist")]
         public virtual ICollection<ListEntry> ListEntries { get; set; }
-        [InverseProperty("MusicListId1Navigation")]
+        [InverseProperty("MusicList")]
         public virtual ICollection<Person> People { get; set; }
     }
 }

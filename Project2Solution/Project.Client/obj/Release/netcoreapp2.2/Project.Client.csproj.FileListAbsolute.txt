@@ -5,7 +5,6 @@ C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Release\netcoreapp2.2\Project.Client.pdb
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Release\netcoreapp2.2\Project.Client.Views.dll
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Release\netcoreapp2.2\Project.Client.Views.pdb
-C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.csprojAssemblyReference.cache
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.csproj.CoreCompileInputs.cache
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.RazorAssemblyInfo.cache
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Release\netcoreapp2.2\Project.Client.RazorAssemblyInfo.cs

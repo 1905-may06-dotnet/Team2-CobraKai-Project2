@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Data", "Project.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Client", "Project.Client\Project.Client.csproj", "{768BD882-EF80-43A1-BAFF-BFB90E0B2742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Network", "Project.Network\Project.Network.csproj", "{3929DBBD-9DDF-4700-A824-A9287EC236E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Network", "Project.Network\Project.Network.csproj", "{3929DBBD-9DDF-4700-A824-A9287EC236E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Test", "Project.Test\Project.Test.csproj", "{B895BE85-748D-4713-8611-B3CC69BA9F54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Test", "Project.Test\Project.Test.csproj", "{B895BE85-748D-4713-8611-B3CC69BA9F54}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Domain", "Project.Domain\Project.Domain.csproj", "{31DCC0AD-0151-44BE-A8D3-33397973FE63}"
 EndProject

@@ -11,11 +11,9 @@ namespace Project.Data.Entities
         public Guid Id { get; set; }
         public Guid? PlayListId { get; set; }
         public Guid? MusicListId { get; set; }
-        [Required]
-        public string Favorite { get; set; }
+        public bool? Favorite { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? TimeStamp { get; set; }
-        [Required]
+        public DateTime TimeStamp { get; set; }
         public string JournalEntry { get; set; }
         [Column("Songlist_Id")]
         public Guid? SonglistId { get; set; }

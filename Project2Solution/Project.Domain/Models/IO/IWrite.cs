@@ -11,6 +11,8 @@ namespace Project.Domain.Models.IO {
 
         public abstract IWrite < T > Save ();
 
+        public abstract void Delete ();
+
     }
 
 }

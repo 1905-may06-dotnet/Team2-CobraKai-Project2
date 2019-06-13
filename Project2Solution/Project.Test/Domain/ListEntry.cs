@@ -36,7 +36,7 @@ namespace Scaffold.Test.Domain {
         [Test]
         public void C_Update () {
 
-            unitTest.Favorite     = "Update/Read Test";
+            unitTest.Favorite     = true;
             unitTest.JournalEntry = "Update/Read Test";
 
             unitTest.Save ();

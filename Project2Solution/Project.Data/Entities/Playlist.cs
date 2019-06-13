@@ -15,7 +15,6 @@ namespace Project.Data.Entities
 
         public Guid Id { get; set; }
         public Guid? PersonId { get; set; }
-        [Required]
         public string Title { get; set; }
 
         [ForeignKey("PersonId")]

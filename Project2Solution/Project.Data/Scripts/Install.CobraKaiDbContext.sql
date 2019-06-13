@@ -64,12 +64,11 @@ GO
 -- Creating table 'People'
 CREATE TABLE [CobraKai].[People] (
     [Id] uniqueidentifier  NOT NULL,
-    [MusicListId] uniqueidentifier  NULL,
     [Email] nvarchar(max)  NOT NULL,
-    [Firstname] nvarchar(max)  NOT NULL,
-    [Lastname] nvarchar(max)  NOT NULL,
     [Username] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
+    [Firstname] nvarchar(max)  NOT NULL,
+    [Lastname] nvarchar(max)  NOT NULL,
     [MusicList_Id] uniqueidentifier  NULL
 );
 GO
@@ -77,11 +76,12 @@ GO
 -- Creating table 'Songs'
 CREATE TABLE [CobraKai].[Songs] (
     [Id] uniqueidentifier  NOT NULL,
-    [Title] nvarchar(max)  NOT NULL,
-    [Artist] nvarchar(max)  NOT NULL,
-    [Genre] nvarchar(max)  NOT NULL,
-    [Length] datetime  NOT NULL,
-    [ReleasedD] nvarchar(max)  NOT NULL
+    [Title] nvarchar(max)  NULL,
+    [Artist] nvarchar(max)  NULL,
+    [Genre] nvarchar(max)  NULL,
+    [Size] decimal(18,0)  NULL,
+    [ReleaseDate] nvarchar(max)  NOT NULL,
+    [FilePath] nvarchar(max)  NULL
 );
 GO
 
@@ -89,7 +89,7 @@ GO
 CREATE TABLE [CobraKai].[Playlists] (
     [Id] uniqueidentifier  NOT NULL,
     [PersonId] uniqueidentifier  NULL,
-    [Title] nvarchar(max)  NOT NULL
+    [Title] nvarchar(max)  NULL
 );
 GO
 
@@ -103,9 +103,7 @@ GO
 -- Creating table 'Journals'
 CREATE TABLE [CobraKai].[Journals] (
     [Id] uniqueidentifier  NOT NULL,
-    [PersonId] uniqueidentifier  NULL,
-    [SongId] uniqueidentifier  NULL,
-    [Title] nvarchar(max)  NOT NULL,
+    [Title] nvarchar(max)  NULL,
     [Person_Id] uniqueidentifier  NULL,
     [Song_Id] uniqueidentifier  NULL
 );
@@ -116,9 +114,9 @@ CREATE TABLE [CobraKai].[ListEntries] (
     [Id] uniqueidentifier  NOT NULL,
     [PlayListId] uniqueidentifier  NULL,
     [MusicListId] uniqueidentifier  NULL,
-    [Favorite] nvarchar(max)  NOT NULL,
-    [TimeStamp] datetime  NULL,
-    [JournalEntry] nvarchar(max)  NOT NULL,
+    [Favorite] bit  NULL,
+    [TimeStamp] datetime  NOT NULL,
+    [JournalEntry] nvarchar(max)  NULL,
     [Songlist_Id] uniqueidentifier  NULL,
     [Song_Id] uniqueidentifier  NULL,
     [Journal_Id] uniqueidentifier  NULL

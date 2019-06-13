@@ -15,18 +15,16 @@ namespace Project.Data.Entities
         }
 
         public Guid Id { get; set; }
-        [Required]
         public string Title { get; set; }
-        [Required]
         public string Artist { get; set; }
-        [Required]
         public string Genre { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime Length { get; set; }
+        [Column(TypeName = "decimal(18, 0)")]
+        public decimal? Size { get; set; }
         [Required]
-        public string ReleasedD { get; set; }
+        public string ReleaseDate { get; set; }
+        public string FilePath { get; set; }
 
-        [InverseProperty("SongId1Navigation")]
+        [InverseProperty("Song")]
         public virtual ICollection<Journal> Journals { get; set; }
         [InverseProperty("Song")]
         public virtual ICollection<ListEntry> ListEntries { get; set; }

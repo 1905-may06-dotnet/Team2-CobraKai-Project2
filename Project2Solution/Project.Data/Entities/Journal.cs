@@ -14,21 +14,18 @@ namespace Project.Data.Entities
         }
 
         public Guid Id { get; set; }
-        public Guid? PersonId { get; set; }
-        public Guid? SongId { get; set; }
-        [Required]
         public string Title { get; set; }
         [Column("Person_Id")]
-        public Guid? PersonId1 { get; set; }
+        public Guid? PersonId { get; set; }
         [Column("Song_Id")]
-        public Guid? SongId1 { get; set; }
+        public Guid? SongId { get; set; }
 
-        [ForeignKey("PersonId1")]
+        [ForeignKey("PersonId")]
         [InverseProperty("Journals")]
-        public virtual Person PersonId1Navigation { get; set; }
-        [ForeignKey("SongId1")]
+        public virtual Person Person { get; set; }
+        [ForeignKey("SongId")]
         [InverseProperty("Journals")]
-        public virtual Song SongId1Navigation { get; set; }
+        public virtual Song Song { get; set; }
         [InverseProperty("Journal")]
         public virtual ICollection<ListEntry> ListEntries { get; set; }
     }

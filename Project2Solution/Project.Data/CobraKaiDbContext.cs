@@ -26,6 +26,7 @@ namespace Project.Data
         {
             if (!optionsBuilder.IsConfigured)
                 optionsBuilder.UseSqlServer("Data Source=SILVERWEAPON\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True");
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,22 +35,22 @@ namespace Project.Data
 
             modelBuilder.Entity<Entities.Journal>(entity =>
             {
-                entity.HasIndex(e => e.PersonId1)
+                entity.HasIndex(e => e.PersonId)
                     .HasName("IX_FK_JournalPerson");
 
-                entity.HasIndex(e => e.SongId1)
+                entity.HasIndex(e => e.SongId)
                     .HasName("IX_FK_JournalSong");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.PersonId1Navigation)
+                entity.HasOne(d => d.Person)
                     .WithMany(p => p.Journals)
-                    .HasForeignKey(d => d.PersonId1)
+                    .HasForeignKey(d => d.PersonId)
                     .HasConstraintName("FK_JournalPerson");
 
-                entity.HasOne(d => d.SongId1Navigation)
+                entity.HasOne(d => d.Song)
                     .WithMany(p => p.Journals)
-                    .HasForeignKey(d => d.SongId1)
+                    .HasForeignKey(d => d.SongId)
                     .HasConstraintName("FK_JournalSong");
             });
 
@@ -97,14 +98,14 @@ namespace Project.Data
 
             modelBuilder.Entity<Entities.Person>(entity =>
             {
-                entity.HasIndex(e => e.MusicListId1)
+                entity.HasIndex(e => e.MusicListId)
                     .HasName("IX_FK_MusicListPerson");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.MusicListId1Navigation)
+                entity.HasOne(d => d.MusicList)
                     .WithMany(p => p.People)
-                    .HasForeignKey(d => d.MusicListId1)
+                    .HasForeignKey(d => d.MusicListId)
                     .HasConstraintName("FK_MusicListPerson");
             });
 
