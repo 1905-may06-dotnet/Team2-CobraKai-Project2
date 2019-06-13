@@ -86,4 +86,3 @@ C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.dll
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.pdb
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.csproj.CopyComplete
-C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.csprojAssemblyReference.cache

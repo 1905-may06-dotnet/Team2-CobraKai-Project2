@@ -14,3 +14,4 @@ C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Debug\netcoreapp2.2\Project.Network.AssemblyInfo.cs
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Debug\netcoreapp2.2\Project.Network.dll
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Debug\netcoreapp2.2\Project.Network.pdb
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Network\obj\Debug\netcoreapp2.2\Project.Network.csprojAssemblyReference.cache
