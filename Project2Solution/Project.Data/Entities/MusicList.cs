@@ -5,21 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Data.Entities
 {
-    [Table("MusicLists", Schema = "CobraKai")]
     public partial class MusicList
     {
         public MusicList()
         {
-            ListEntries = new HashSet<ListEntry>();
-            People = new HashSet<Person>();
+            ListEntries = new List<ListEntry>();
+            People = new List<Person>();
         }
 
-        public Guid Id { get; set; }
-        public Guid? PersonId { get; set; }
+        public int Id { get; set; }
+        public int PersonId { get; set; }
 
-        [InverseProperty("Songlist")]
-        public virtual ICollection<ListEntry> ListEntries { get; set; }
-        [InverseProperty("MusicList")]
-        public virtual ICollection<Person> People { get; set; }
+        public List<ListEntry> ListEntries { get; set; }
+        public List<Person> People { get; set; }
     }
 }

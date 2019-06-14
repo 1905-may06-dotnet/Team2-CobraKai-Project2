@@ -11,8 +11,4 @@
     <None Remove="Model\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Project.Data\Project.Data.csproj" />
-  </ItemGroup>
-
 </Project>

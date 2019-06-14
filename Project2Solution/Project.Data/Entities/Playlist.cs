@@ -10,17 +10,14 @@ namespace Project.Data.Entities
     {
         public Playlist()
         {
-            ListEntries = new HashSet<ListEntry>();
+            ListEntries = new List<ListEntry>();
         }
 
-        public Guid Id { get; set; }
-        public Guid? PersonId { get; set; }
+        public int Id { get; set; }
+        public int PersonId { get; set; }
         public string Title { get; set; }
 
-        [ForeignKey("PersonId")]
-        [InverseProperty("Playlists")]
-        public virtual Person Person { get; set; }
-        [InverseProperty("MusicList")]
-        public virtual ICollection<ListEntry> ListEntries { get; set; }
+        public Person Person { get; set; }
+        public List<ListEntry> ListEntries { get; set; }
     }
 }

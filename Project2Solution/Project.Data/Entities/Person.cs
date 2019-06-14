@@ -5,35 +5,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Data.Entities
 {
-    [Table("People", Schema = "CobraKai")]
     public partial class Person
     {
         public Person()
         {
-            Journals = new HashSet<Journal>();
-            Playlists = new HashSet<Playlist>();
+            Journals = new List<Journal>();
+            Playlists = new List<Playlist>();
         }
 
-        public Guid Id { get; set; }
-        [Required]
+        public int Id { get; set; }
+        public int MusicListId { get; set; }
         public string Email { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
         [Required]
         public string Username { get; set; }
-        [Required]
         public string Password { get; set; }
-        [Required]
-        public string Firstname { get; set; }
-        [Required]
-        public string Lastname { get; set; }
-        [Column("MusicList_Id")]
-        public Guid? MusicListId { get; set; }
 
-        [ForeignKey("MusicListId")]
-        [InverseProperty("People")]
-        public virtual MusicList MusicList { get; set; }
-        [InverseProperty("Person")]
-        public virtual ICollection<Journal> Journals { get; set; }
-        [InverseProperty("Person")]
-        public virtual ICollection<Playlist> Playlists { get; set; }
+        public MusicList MusicList { get; set; }
+        public List<Journal> Journals { get; set; }
+        public List<Playlist> Playlists { get; set; }
     }
 }

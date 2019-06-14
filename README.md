@@ -1,5 +1,5 @@
 # Team2-CobraKai-Project2
-Team members: Daniel Coombs (lead), Fred Brume, John Maurer
+Team members: Daniel Coombs (lead), Michael Lee, Fred Brume, John Maurer
 
 ## Scope: 
 

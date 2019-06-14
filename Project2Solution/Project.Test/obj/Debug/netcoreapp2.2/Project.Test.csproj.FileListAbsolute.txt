@@ -25,10 +25,8 @@ C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\D
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Test.runtimeconfig.dev.json
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Test.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Test.pdb
-C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Data.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Domain.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Domain.pdb
-C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Data.pdb
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.csprojAssemblyReference.cache
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.csproj.CoreCompileInputs.cache
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.AssemblyInfoInputs.cache

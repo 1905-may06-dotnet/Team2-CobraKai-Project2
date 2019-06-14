@@ -10,23 +10,17 @@ namespace Project.Data.Entities
     {
         public Journal()
         {
-            ListEntries = new HashSet<ListEntry>();
+            ListEntries = new List<ListEntry>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+        public int PersonId { get; set; }
+        public int SongId { get; set; }
+        [Required]
         public string Title { get; set; }
-        [Column("Person_Id")]
-        public Guid? PersonId { get; set; }
-        [Column("Song_Id")]
-        public Guid? SongId { get; set; }
 
-        [ForeignKey("PersonId")]
-        [InverseProperty("Journals")]
-        public virtual Person Person { get; set; }
-        [ForeignKey("SongId")]
-        [InverseProperty("Journals")]
-        public virtual Song Song { get; set; }
-        [InverseProperty("Journal")]
-        public virtual ICollection<ListEntry> ListEntries { get; set; }
+        public Person Person { get; set; }
+        public Song Song { get; set; }
+        public List<ListEntry> ListEntries { get; set; }
     }
 }

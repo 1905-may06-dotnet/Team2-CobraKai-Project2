@@ -15,3 +15,8 @@ C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2-master\Project2Solution\
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2-master\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.AssemblyInfo.cs
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2-master\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.dll
 C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2-master\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Domain.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Domain.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.csproj.CopyComplete
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Data.runtimeconfig.json
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Data.runtimeconfig.dev.json

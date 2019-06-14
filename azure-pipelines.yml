@@ -12,8 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathtosolution: 'Project2Solution'
-  pathtoproject: 'Project2Solution/Project.Client'
-  pathtotest: 'Proejct2Solution/Project.Test'
+  #pathtoproject: 'Project2Solution/Library'
 
 steps:
 
@@ -29,26 +28,4 @@ steps:
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
 
-#- task: DotNetCoreCLI@2
-#  inputs:
-#      command: 'publish'
-#  publishWebProjects: true
-
-#to add: sonar cloud analyze and 
-
-#- task: AzureRmWebAppDeployment@4
-#  inputs:
-#    ConnectionType: 'AzureRM'
-#    azureSubscription: 'connectiondc'
-#    appType: 'webApp'
-#    WebAppName: '' #to determine web service name
-#    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
-
-- task: DotNetCoreCLI@2
-  inputs:
-   command: publish
-   publishWebProjects: True
-   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-   zipAfterPublish: True
-
-- task: PublishBuildArtifacts@1
+#to add: sonar cloud analyze and publish
