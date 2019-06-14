@@ -1,4 +1,0 @@
-C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Temp\obj\Debug\netcoreapp2.2\Temp.csprojAssemblyReference.cache
-C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Temp\obj\Debug\netcoreapp2.2\Temp.csproj.CoreCompileInputs.cache
-C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Temp\obj\Debug\netcoreapp2.2\Temp.AssemblyInfoInputs.cache
-C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Temp\obj\Debug\netcoreapp2.2\Temp.AssemblyInfo.cs

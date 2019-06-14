@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Data.Entities
 {
-    [Table("Journals", Schema = "CobraKai")]
     public partial class Journal
     {
         public Journal()
