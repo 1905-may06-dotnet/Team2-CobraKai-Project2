@@ -10,7 +10,7 @@ using Project.Data.Entities;
 namespace Project.Data.Migrations
 {
     [DbContext(typeof(CobraKaiDbContext))]
-    [Migration("20190615173757_Context")]
+    [Migration("20190615211724_Context")]
     partial class Context
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

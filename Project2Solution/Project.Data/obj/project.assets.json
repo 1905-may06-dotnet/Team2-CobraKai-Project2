@@ -3594,35 +3594,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/fredbrume/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/Project.Data.csproj",
+      "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
       "projectName": "Project.Data",
-      "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/Project.Data.csproj",
-      "packagesPath": "/Users/fredbrume/.nuget/packages/",
-      "outputPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/obj/",
+      "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj",
+      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+      "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/fredbrume/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Domain/Project.Domain.csproj": {
-              "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Domain/Project.Domain.csproj"
+            "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {
+              "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj"
             }
           }
         }
