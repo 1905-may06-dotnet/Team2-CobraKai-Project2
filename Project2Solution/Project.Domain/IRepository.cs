@@ -33,17 +33,6 @@ namespace Project.Domain
         Song UpdateSong(Song song);
         void DeleteSong(int id);
 
-
-/*        ListEntry CreateListEntry();
-        //ListEntry ReadListEntry();
-        ListEntry UpdateListEntry();
-        ListEntry DeleteListEntry();
-
-        MusicList CreateMusicList();
-        //MusicList ReadMusicList();
-        MusicList UpdateMusicList();
-        MusicList DeleteMusicList();
-*/
         Person CreatePerson();
         //Person ReadPerson();
         Person UpdatePerson();

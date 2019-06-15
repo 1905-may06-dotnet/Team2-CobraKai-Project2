@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Project.Data;
+using Project.Data.Entities;
 
 namespace Project.Data.Migrations
 {
@@ -29,8 +29,7 @@ namespace Project.Data.Migrations
 
                     b.Property<int?>("SongId");
 
-                    b.Property<string>("Title")
-                        .IsRequired();
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
@@ -38,55 +37,7 @@ namespace Project.Data.Migrations
 
                     b.HasIndex("SongId");
 
-                    b.ToTable("Journals","CobraKai");
-                });
-
-            modelBuilder.Entity("Project.Data.Entities.ListEntry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool?>("Favorite");
-
-                    b.Property<string>("JournalEntry");
-
-                    b.Property<int?>("JournalId");
-
-                    b.Property<int?>("MusicListId");
-
-                    b.Property<int?>("PlayListId");
-
-                    b.Property<int?>("SongId");
-
-                    b.Property<int?>("SonglistId");
-
-                    b.Property<string>("TimeStamp");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JournalId");
-
-                    b.HasIndex("MusicListId");
-
-                    b.HasIndex("SongId");
-
-                    b.HasIndex("SonglistId");
-
-                    b.ToTable("ListEntries");
-                });
-
-            modelBuilder.Entity("Project.Data.Entities.MusicList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("PersonId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MusicLists");
+                    b.ToTable("Journals");
                 });
 
             modelBuilder.Entity("Project.Data.Entities.Person", b =>
@@ -101,16 +52,11 @@ namespace Project.Data.Migrations
 
                     b.Property<string>("Lastname");
 
-                    b.Property<int?>("MusicListId");
-
                     b.Property<string>("Password");
 
-                    b.Property<string>("Username")
-                        .IsRequired();
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MusicListId");
 
                     b.ToTable("People");
                 });
@@ -123,13 +69,17 @@ namespace Project.Data.Migrations
 
                     b.Property<int?>("PersonId");
 
+                    b.Property<int?>("SongId");
+
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Playlists","CobraKai");
+                    b.HasIndex("SongId");
+
+                    b.ToTable("Playlists");
                 });
 
             modelBuilder.Entity("Project.Data.Entities.Song", b =>
@@ -148,7 +98,8 @@ namespace Project.Data.Migrations
 
                     b.Property<string>("ReleaseDate");
 
-                    b.Property<decimal?>("Size");
+                    b.Property<decimal>("Size")
+                        .HasColumnType("decimal(18, 0)");
 
                     b.Property<string>("Title");
 
@@ -160,45 +111,27 @@ namespace Project.Data.Migrations
             modelBuilder.Entity("Project.Data.Entities.Journal", b =>
                 {
                     b.HasOne("Project.Data.Entities.Person", "Person")
-                        .WithMany("Journals")
-                        .HasForeignKey("PersonId");
+                        .WithMany("Journal")
+                        .HasForeignKey("PersonId")
+                        .HasConstraintName("FK_PersonId_ToJournal");
 
                     b.HasOne("Project.Data.Entities.Song", "Song")
                         .WithMany("Journals")
-                        .HasForeignKey("SongId");
-                });
-
-            modelBuilder.Entity("Project.Data.Entities.ListEntry", b =>
-                {
-                    b.HasOne("Project.Data.Entities.Journal", "Journal")
-                        .WithMany("ListEntries")
-                        .HasForeignKey("JournalId");
-
-                    b.HasOne("Project.Data.Entities.Playlist", "MusicList")
-                        .WithMany("ListEntries")
-                        .HasForeignKey("MusicListId");
-
-                    b.HasOne("Project.Data.Entities.Song", "Song")
-                        .WithMany("ListEntries")
-                        .HasForeignKey("SongId");
-
-                    b.HasOne("Project.Data.Entities.MusicList", "Songlist")
-                        .WithMany("ListEntries")
-                        .HasForeignKey("SonglistId");
-                });
-
-            modelBuilder.Entity("Project.Data.Entities.Person", b =>
-                {
-                    b.HasOne("Project.Data.Entities.MusicList", "MusicList")
-                        .WithMany("People")
-                        .HasForeignKey("MusicListId");
+                        .HasForeignKey("SongId")
+                        .HasConstraintName("FK_SongId_ToJournal");
                 });
 
             modelBuilder.Entity("Project.Data.Entities.Playlist", b =>
                 {
                     b.HasOne("Project.Data.Entities.Person", "Person")
+                        .WithMany("Playlist")
+                        .HasForeignKey("PersonId")
+                        .HasConstraintName("FK_PersonId_ToPlaylist");
+
+                    b.HasOne("Project.Data.Entities.Song", "Song")
                         .WithMany("Playlists")
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("SongId")
+                        .HasConstraintName("FK_SongId_ToPlaylist");
                 });
 #pragma warning restore 612, 618
         }

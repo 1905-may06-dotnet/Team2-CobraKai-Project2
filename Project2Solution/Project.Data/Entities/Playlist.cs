@@ -7,16 +7,12 @@ namespace Project.Data.Entities
 {
     public partial class Playlist
     {
-        public Playlist()
-        {
-            ListEntries = new List<ListEntry>();
-        }
-
         public int Id { get; set; }
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
+        public int? SongId { get; set; }
         public string Title { get; set; }
 
-        public Person Person { get; set; }
-        public List<ListEntry> ListEntries { get; set; }
+        public virtual Person Person { get; set; }
+        public virtual Song Song { get; set; }
     }
 }

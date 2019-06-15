@@ -5,18 +5,21 @@ namespace Project.Domain
 {
     public class Journal
     {
-        public Journal()
-        {
-            ListEntries = new List<ListEntry>();
-        }
+        //gets or sets Journal ID
         public int Id { get; set; }
 
-        public int PersonId { get; set; }
-        public int SongId { get; set; }
+        //gets or sets User's ID
+        //referenced from Person table
+        public int? PersonId { get; set; }
+        //gets or sets Song's ID
+        //referenced from Song table
+        public int? SongId { get; set; }
+        //gets or sets Title of Journal
         public string Title { get; set; }
 
+        //references Person table
         public Person Person { get; set; }
-        public Song Song { get; set; }
-        public List<ListEntry> ListEntries { get; set; }
+        //references list of songs in any of user's playlists
+        public List<Song> Song { get; set; }
     }
 }

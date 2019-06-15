@@ -7,7 +7,7 @@ using System.Linq;
 namespace Project.Data
 {
     public static class Mapper
-    {
+    {/*
         public static Domain.Journal Map(Journal journal) => new Domain.Journal
         {
             Id = journal.Id,
@@ -139,5 +139,6 @@ namespace Project.Data
 
         public static IEnumerable<Domain.Song> Map(IEnumerable<Song> songs) => songs.Select(Map);
         public static IEnumerable<Song> Map(IEnumerable<Domain.Song> songs) => songs.Select(Map);
+        */
     }
 }
