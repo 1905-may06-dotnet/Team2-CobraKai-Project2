@@ -3637,7 +3637,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -6956,43 +6956,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/fredbrume/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Test\\Project.Test.csproj",
+      "projectUniqueName": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/Project.Test.csproj",
       "projectName": "Project.Test",
-      "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Test\\Project.Test.csproj",
-      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Test\\obj\\",
+      "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/Project.Test.csproj",
+      "packagesPath": "/Users/fredbrume/.nuget/packages/",
+      "outputPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/Users/fredbrume/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
-              "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj"
+            "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/Project.Data.csproj": {
+              "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/Project.Data.csproj"
             },
-            "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {
-              "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj"
+            "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Domain/Project.Domain.csproj": {
+              "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Domain/Project.Domain.csproj"
             }
           }
         }

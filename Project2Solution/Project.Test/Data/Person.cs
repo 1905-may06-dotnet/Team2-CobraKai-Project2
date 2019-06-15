@@ -11,6 +11,7 @@ namespace Project.Test
         static Project.Domain.Person unitTest = new Project.Domain.Person();
         Project.Data.Entities.CobraKaiDbContext db = new Project.Data.Entities.CobraKaiDbContext();
 
+       
         [Test]
         public void A_Create()
         {
@@ -19,11 +20,14 @@ namespace Project.Test
             a.CreatePerson(unitTest);
             Assert.Pass();
         }
-
-        //[Test]
-        //public void D_Delete()
-        //{
-
-        //}
+        [Test]
+        public void D_Delete()
+        {
+            int personId = 2;
+            Project.Data.Repository a = new Project.Data.Repository(db);
+            unitTest = new Project.Domain.Person();
+            a.DeletePerson(personId);
+            Assert.Pass();
+        }
     }
 }
