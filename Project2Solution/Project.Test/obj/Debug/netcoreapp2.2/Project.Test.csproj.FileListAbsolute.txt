@@ -34,3 +34,5 @@ C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\D
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.csproj.CopyComplete
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Data.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Data.pdb
