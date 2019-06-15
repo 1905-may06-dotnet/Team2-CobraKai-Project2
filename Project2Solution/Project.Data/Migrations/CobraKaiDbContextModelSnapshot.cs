@@ -25,6 +25,8 @@ namespace Project.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("JournalEntry");
+
                     b.Property<int?>("PersonId");
 
                     b.Property<int?>("SongId");
@@ -98,8 +100,7 @@ namespace Project.Data.Migrations
 
                     b.Property<string>("ReleaseDate");
 
-                    b.Property<decimal>("Size")
-                        .HasColumnType("decimal(18, 0)");
+                    b.Property<decimal>("Size");
 
                     b.Property<string>("Title");
 
@@ -112,26 +113,22 @@ namespace Project.Data.Migrations
                 {
                     b.HasOne("Project.Data.Entities.Person", "Person")
                         .WithMany("Journal")
-                        .HasForeignKey("PersonId")
-                        .HasConstraintName("FK_PersonId_ToJournal");
+                        .HasForeignKey("PersonId");
 
                     b.HasOne("Project.Data.Entities.Song", "Song")
                         .WithMany("Journals")
-                        .HasForeignKey("SongId")
-                        .HasConstraintName("FK_SongId_ToJournal");
+                        .HasForeignKey("SongId");
                 });
 
             modelBuilder.Entity("Project.Data.Entities.Playlist", b =>
                 {
                     b.HasOne("Project.Data.Entities.Person", "Person")
                         .WithMany("Playlist")
-                        .HasForeignKey("PersonId")
-                        .HasConstraintName("FK_PersonId_ToPlaylist");
+                        .HasForeignKey("PersonId");
 
                     b.HasOne("Project.Data.Entities.Song", "Song")
                         .WithMany("Playlists")
-                        .HasForeignKey("SongId")
-                        .HasConstraintName("FK_SongId_ToPlaylist");
+                        .HasForeignKey("SongId");
                 });
 #pragma warning restore 612, 618
         }

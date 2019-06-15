@@ -7,8 +7,11 @@ namespace Project.Data.Entities
 {
     public partial class Playlist
     {
+        [Key]
         public int Id { get; set; }
+        [ForeignKey("Person")]
         public int? PersonId { get; set; }
+        [ForeignKey("Song")]
         public int? SongId { get; set; }
         public string Title { get; set; }
 

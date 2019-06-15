@@ -13,7 +13,8 @@ namespace Project.Data
             Id = journal.Id,
             PersonId = journal.PersonId,
             SongId = journal.SongId,
-            Title = journal.Title
+            Title = journal.Title,
+            JournalEntry = journal.JournalEntry
         };
 
         public static Journal Map(Domain.Journal journal) => new Journal
@@ -21,7 +22,8 @@ namespace Project.Data
             Id = journal.Id,
             PersonId = journal.PersonId,
             SongId = journal.SongId,
-            Title = journal.Title
+            Title = journal.Title,
+            JournalEntry = journal.JournalEntry
         };
 
         public static Domain.Song Map(Song song) => new Domain.Song

@@ -12,7 +12,8 @@ namespace Project.Data.Entities
             Journal = new HashSet<Journal>();
             Playlist = new HashSet<Playlist>();
         }
-
+        
+        [Key]
         public int Id { get; set; }
         public string Email { get; set; }
         public string Firstname { get; set; }

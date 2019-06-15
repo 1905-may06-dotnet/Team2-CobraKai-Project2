@@ -7,6 +7,13 @@ namespace Project.Data.Entities
 {
     public partial class Song
     {
+        public Song()
+        {
+            Playlists = new HashSet<Playlist>();
+            Journals = new HashSet<Journal>();
+        }
+
+        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
         public string Artist { get; set; }

@@ -16,6 +16,8 @@ namespace Project.Domain
         public int? SongId { get; set; }
         //gets or sets Title of Journal
         public string Title { get; set; }
+        //gets or sets Journal Entry for Song
+        public string JournalEntry { get; set; }
 
         //references Person table
         public Person Person { get; set; }

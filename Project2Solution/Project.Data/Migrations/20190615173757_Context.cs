@@ -33,7 +33,7 @@ namespace Project.Data.Migrations
                     Title = table.Column<string>(nullable: true),
                     Artist = table.Column<string>(nullable: true),
                     Genre = table.Column<string>(nullable: true),
-                    Size = table.Column<decimal>(type: "decimal(18, 0)", nullable: true),
+                    Size = table.Column<decimal>(nullable: false),
                     Length = table.Column<string>(nullable: true),
                     ReleaseDate = table.Column<string>(nullable: true),
                     FilePath = table.Column<string>(nullable: true)
@@ -51,19 +51,20 @@ namespace Project.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PersonId = table.Column<int>(nullable: true),
                     SongId = table.Column<int>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    JournalEntry = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Journals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonId_ToJournal",
+                        name: "FK_Journals_People_PersonId",
                         column: x => x.PersonId,
                         principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SongId_ToJournal",
+                        name: "FK_Journals_Songs_SongId",
                         column: x => x.SongId,
                         principalTable: "Songs",
                         principalColumn: "Id",
@@ -84,13 +85,13 @@ namespace Project.Data.Migrations
                 {
                     table.PrimaryKey("PK_Playlists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonId_ToPlaylist",
+                        name: "FK_Playlists_People_PersonId",
                         column: x => x.PersonId,
                         principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SongId_ToPlaylist",
+                        name: "FK_Playlists_Songs_SongId",
                         column: x => x.SongId,
                         principalTable: "Songs",
                         principalColumn: "Id",
