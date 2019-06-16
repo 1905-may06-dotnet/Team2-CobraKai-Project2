@@ -10,26 +10,23 @@ namespace Project.Test
     {
         static Project.Domain.Person unitTest = new Project.Domain.Person();
         Project.Data.Entities.CobraKaiDbContext db = new Project.Data.Entities.CobraKaiDbContext();
-<<<<<<< HEAD
 
        
         [Test]
         public void A_Create()
         {
             Project.Data.Repository a = new Project.Data.Repository(db);
-=======
         Project.Data.Repository a;
 
         [Test]
         public void A_Create()
         {
             a = new Project.Data.Repository(db);
->>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
             unitTest = new Project.Domain.Person();
             a.CreatePerson(unitTest);
             Assert.Pass();
         }
-<<<<<<< HEAD
+            
         // [Test]
         // public void D_Delete()
         // {
@@ -39,7 +36,6 @@ namespace Project.Test
         //     a.DeletePerson(personId);
         //     Assert.Pass();
         // }
-=======
         
         //test GetPersons()
         [Test]
@@ -79,6 +75,5 @@ namespace Project.Test
             a.DeletePerson(personId);
             Assert.Pass();
         }
->>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
     }
 }
