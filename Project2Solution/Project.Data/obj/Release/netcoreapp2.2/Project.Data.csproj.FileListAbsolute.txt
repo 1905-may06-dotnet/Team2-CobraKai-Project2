@@ -1,0 +1,21 @@
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Release\netcoreapp2.2\Project.Data.deps.json
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Release\netcoreapp2.2\Project.Data.dll
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Release\netcoreapp2.2\Project.Data.pdb
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.csproj.CoreCompileInputs.cache
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.AssemblyInfoInputs.cache
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.AssemblyInfo.cs
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.dll
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.pdb
+<<<<<<< HEAD
+C:\Users\jmau0\Desktop\Revature\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.csprojAssemblyReference.cache
+=======
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Release\netcoreapp2.2\Project.Data.deps.json
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Release\netcoreapp2.2\Project.Data.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Release\netcoreapp2.2\Project.Data.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.csprojAssemblyReference.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.csproj.CoreCompileInputs.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.AssemblyInfoInputs.cache
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.AssemblyInfo.cs
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Release\netcoreapp2.2\Project.Data.pdb
+>>>>>>> a088780098acd1a90f7c7fcfd5f51931a1890f61
