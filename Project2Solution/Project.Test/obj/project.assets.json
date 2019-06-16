@@ -136,6 +136,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
+<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
         "type": "package",
         "dependencies": {
@@ -148,6 +149,8 @@
           "lib/netstandard2.0/_._": {}
         }
       },
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
       "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2048,7 +2051,10 @@
           "Microsoft.EntityFrameworkCore": "2.2.4",
           "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore.Tools": "2.2.4",
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           "Project.Domain": "1.0.0"
         },
         "compile": {
@@ -2283,6 +2289,7 @@
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
+<<<<<<< HEAD
     "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
       "sha512": "9n1Mv6FrFmlVkkXVkO7U71GG42CfRjlKV0bca++UYjsmmtVVds4PhUjgVrHCh3ZTRI4jqBc5Y7trUvwdwXisPw==",
       "type": "package",
@@ -2307,6 +2314,8 @@
         "tools/netcoreapp2.0/any/ef.runtimeconfig.json"
       ]
     },
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
     "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
       "sha512": "spsJkYo8gGJapaxTSQFN/wqA+ghpJMLwB4ZyTB+fSdpd7AmMFP/YSpIcGmczcw4KggpxLGhLk7lCkSIlgvHaqQ==",
       "type": "package",
@@ -3674,7 +3683,11 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
+<<<<<<< HEAD
       "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+=======
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -6993,12 +7006,19 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "/Users/fredbrume/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+=======
+    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/Project.Test.csproj",
       "projectName": "Project.Test",
       "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/Project.Test.csproj",
@@ -7010,21 +7030,49 @@
       ],
       "configFilePaths": [
         "/Users/fredbrume/.nuget/NuGet/NuGet.Config"
+=======
+      "projectUniqueName": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Test\\Project.Test.csproj",
+      "projectName": "Project.Test",
+      "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Test\\Project.Test.csproj",
+      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+      "outputPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Test\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+<<<<<<< HEAD
+=======
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+<<<<<<< HEAD
             "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/Project.Data.csproj": {
               "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Data/Project.Data.csproj"
             },
             "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Domain/Project.Domain.csproj": {
               "projectPath": "/Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Domain/Project.Domain.csproj"
+=======
+            "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj": {
+              "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Data\\Project.Data.csproj"
+            },
+            "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj": {
+              "projectPath": "C:\\Revature\\Project2\\Team2-CobraKai-Project2\\Project2Solution\\Project.Domain\\Project.Domain.csproj"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
             }
           }
         }
