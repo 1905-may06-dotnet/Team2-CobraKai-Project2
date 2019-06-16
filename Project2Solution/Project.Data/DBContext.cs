@@ -6,7 +6,7 @@ namespace Project.Data
 {
     public sealed class DBInstance //Singleton
     {
-        private static Entities.CobraKaiDbContext instance = null;
+       /* private static Entities.CobraKaiDbContext instance = null;
         private DBInstance()
         {
 
@@ -26,6 +26,6 @@ namespace Project.Data
                     return instance;
                 }
             }
-        }
+        }*/
     }
 }

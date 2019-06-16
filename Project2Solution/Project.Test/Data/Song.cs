@@ -74,10 +74,15 @@ namespace Project.Test
         [Test]
         public void C_Update()
         {
+            Project.Data.Repository repo = new Project.Data.Repository(db);
+            int songid = 0;
+            foreach (var i in repo.GetSongs()) {
+                songid = i.Id;
+            }
             Project.Domain.Song songTest = new Project.Domain.Song()
             {
 
-                Id = 1,
+                Id = songid,
                 Title = "Encore",
                 Artist = "Linkin Park",
                 Genre = "Rock",
@@ -87,7 +92,7 @@ namespace Project.Test
                 FilePath = "audio/file"
             };
 
-            Project.Data.Repository repo = new Project.Data.Repository(db);
+            
             repo.UpdateSong(songTest);
 
             Assert.Pass();

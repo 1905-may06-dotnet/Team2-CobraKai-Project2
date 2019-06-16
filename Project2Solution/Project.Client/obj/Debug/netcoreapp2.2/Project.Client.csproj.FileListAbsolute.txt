@@ -12,3 +12,8 @@ C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.RazorTargetAssemblyInfo.cache
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Debug\netcoreapp2.2\Project.Data.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Debug\netcoreapp2.2\Project.Domain.dll
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Debug\netcoreapp2.2\Project.Data.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\bin\Debug\netcoreapp2.2\Project.Domain.pdb
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Client\obj\Debug\netcoreapp2.2\Project.Client.csproj.CopyComplete
