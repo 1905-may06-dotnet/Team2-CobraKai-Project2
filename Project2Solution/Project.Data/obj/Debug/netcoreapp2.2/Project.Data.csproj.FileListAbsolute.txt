@@ -33,3 +33,4 @@ C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\D
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Domain.dll
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\bin\Debug\netcoreapp2.2\Project.Domain.pdb
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.csproj.CopyComplete
+C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Data\obj\Debug\netcoreapp2.2\Project.Data.csprojAssemblyReference.cache

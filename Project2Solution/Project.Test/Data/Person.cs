@@ -35,7 +35,12 @@ namespace Project.Test
         public void B_Read_2()
         {
             a = new Project.Data.Repository(db);
-            unitTest = a.GetPersonById(3);
+            int id = 0;
+            foreach (var i in a.GetPersons())
+            {
+                id = i.Id;
+            }
+            unitTest = a.GetPersonById(id);
             Assert.AreEqual(unitTest.Email, null);
         }
 
@@ -43,20 +48,29 @@ namespace Project.Test
         public void C_Update()
         {
             a = new Project.Data.Repository(db);
-            unitTest = a.GetPersonById(3);
+            int id = 0;
+            foreach (var i in a.GetPersons())
+            {
+                id = i.Id;
+            }
+            unitTest = a.GetPersonById(id);
             unitTest.Email = "a@b.c";
             a.UpdatePerson(unitTest);
-            unitTest = a.GetPersonById(3);
+            unitTest = a.GetPersonById(id);
             Assert.AreEqual(unitTest.Email, "a@b.c");
         }
 
         [Test]
         public void D_Delete()
         {
-            int personId = 3;
             a = new Project.Data.Repository(db);
+            int id = 0;
+            foreach (var i in a.GetPersons())
+            {
+                id = i.Id;
+            }
             unitTest = new Project.Domain.Person();
-            a.DeletePerson(personId);
+            a.DeletePerson(id);
             Assert.Pass();
         }
     }
