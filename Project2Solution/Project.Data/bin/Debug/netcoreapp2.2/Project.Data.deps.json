@@ -1,7 +1,11 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
+<<<<<<< HEAD
+    "signature": "36dfb09cb41086ee22203d99d346033840fffb38"
+=======
     "signature": "790c36807e5a4fd5db299e284791f240832210ef"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
   },
   "compilationOptions": {},
   "targets": {
@@ -11,6 +15,10 @@
           "Microsoft.EntityFrameworkCore": "2.2.4",
           "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+<<<<<<< HEAD
+          "Microsoft.EntityFrameworkCore.Tools": "2.2.4",
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           "Project.Domain": "1.0.0"
         },
         "runtime": {
@@ -82,6 +90,14 @@
           }
         }
       },
+<<<<<<< HEAD
+      "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "2.2.4"
+        }
+      },
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
       "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.2.0"
@@ -254,7 +270,11 @@
           "runtimes/win-arm64/native/sni.dll": {
             "rid": "win-arm64",
             "assetType": "native",
+<<<<<<< HEAD
+            "fileVersion": "0.0.0.0"
+=======
             "fileVersion": "4.6.25512.1"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -263,7 +283,11 @@
           "runtimes/win-x64/native/sni.dll": {
             "rid": "win-x64",
             "assetType": "native",
+<<<<<<< HEAD
+            "fileVersion": "0.0.0.0"
+=======
             "fileVersion": "4.6.25512.1"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -272,7 +296,11 @@
           "runtimes/win-x86/native/sni.dll": {
             "rid": "win-x86",
             "assetType": "native",
+<<<<<<< HEAD
+            "fileVersion": "0.0.0.0"
+=======
             "fileVersion": "4.6.25512.1"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -449,7 +477,11 @@
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "assemblyVersion": "4.0.4.0",
+<<<<<<< HEAD
+            "fileVersion": "4.0.0.0"
+=======
             "fileVersion": "0.0.0.0"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -578,6 +610,16 @@
       "path": "microsoft.entityframeworkcore.sqlserver/2.2.4",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.2.4.nupkg.sha512"
     },
+<<<<<<< HEAD
+    "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9n1Mv6FrFmlVkkXVkO7U71GG42CfRjlKV0bca++UYjsmmtVVds4PhUjgVrHCh3ZTRI4jqBc5Y7trUvwdwXisPw==",
+      "path": "microsoft.entityframeworkcore.tools/2.2.4",
+      "hashPath": "microsoft.entityframeworkcore.tools.2.2.4.nupkg.sha512"
+    },
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
     "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,

@@ -1,7 +1,11 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
+<<<<<<< HEAD
+    "signature": "024d89cc1bbb90375e5003899362c6e44046869f"
+=======
     "signature": "18be47de64ccb1f2052f473330da1e13ca7e804c"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
   },
   "compilationOptions": {},
   "targets": {
@@ -127,6 +131,14 @@
           }
         }
       },
+<<<<<<< HEAD
+      "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "2.2.4"
+        }
+      },
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
       "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.2.0"
@@ -634,7 +646,11 @@
           "runtimes/win-arm64/native/sni.dll": {
             "rid": "win-arm64",
             "assetType": "native",
+<<<<<<< HEAD
+            "fileVersion": "0.0.0.0"
+=======
             "fileVersion": "4.6.25512.1"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -643,7 +659,11 @@
           "runtimes/win-x64/native/sni.dll": {
             "rid": "win-x64",
             "assetType": "native",
+<<<<<<< HEAD
+            "fileVersion": "0.0.0.0"
+=======
             "fileVersion": "4.6.25512.1"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -652,7 +672,11 @@
           "runtimes/win-x86/native/sni.dll": {
             "rid": "win-x86",
             "assetType": "native",
+<<<<<<< HEAD
+            "fileVersion": "0.0.0.0"
+=======
             "fileVersion": "4.6.25512.1"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -1088,7 +1112,11 @@
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "assemblyVersion": "4.0.4.0",
+<<<<<<< HEAD
+            "fileVersion": "4.0.0.0"
+=======
             "fileVersion": "0.0.0.0"
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           }
         }
       },
@@ -1346,6 +1374,10 @@
           "Microsoft.EntityFrameworkCore": "2.2.4",
           "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+<<<<<<< HEAD
+          "Microsoft.EntityFrameworkCore.Tools": "2.2.4",
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
           "Project.Domain": "1.0.0"
         },
         "runtime": {
@@ -1435,6 +1467,16 @@
       "path": "microsoft.entityframeworkcore.sqlserver/2.2.4",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.2.4.nupkg.sha512"
     },
+<<<<<<< HEAD
+    "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9n1Mv6FrFmlVkkXVkO7U71GG42CfRjlKV0bca++UYjsmmtVVds4PhUjgVrHCh3ZTRI4jqBc5Y7trUvwdwXisPw==",
+      "path": "microsoft.entityframeworkcore.tools/2.2.4",
+      "hashPath": "microsoft.entityframeworkcore.tools.2.2.4.nupkg.sha512"
+    },
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
     "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -1655,7 +1697,11 @@
     "System.Collections.Specialized/4.3.0": {
       "type": "package",
       "serviceable": true,
+<<<<<<< HEAD
+      "sha512": "sha512-NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+=======
       "sha512": "sha512-Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
       "path": "system.collections.specialized/4.3.0",
       "hashPath": "system.collections.specialized.4.3.0.nupkg.sha512"
     },

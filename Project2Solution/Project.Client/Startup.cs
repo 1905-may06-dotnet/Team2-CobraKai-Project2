@@ -10,6 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+<<<<<<< HEAD
+using Project.Domain;
+using Project.Data;
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
 
 namespace Project.Client
 {
@@ -25,7 +30,16 @@ namespace Project.Client
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+<<<<<<< HEAD
+            
+            // services.AddDbContext<Data.Entities.CobraKaiDbContext>(options =>
+            //     options.UseSqlServer(Configuration.GetConnectionString("ContextDb")));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IRepository, Repository>();
+=======
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

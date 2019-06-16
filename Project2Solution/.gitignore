@@ -1,5 +1,4 @@
-**/.vs/**
+**/.DS_Store
+**/.vs/Project2Solution/**
 /CobraKaiDbContext.cs/
 
-**/bin/**
-**/obj/**

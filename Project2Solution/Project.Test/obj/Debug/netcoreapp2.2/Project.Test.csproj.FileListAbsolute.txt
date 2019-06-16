@@ -17,6 +17,28 @@ C:/Users/jmau0/Desktop/Revature/Team2-CobraKai-Project2-master/Project2Solution/
 C:/Users/jmau0/Desktop/Revature/Team2-CobraKai-Project2-master/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csproj.CopyComplete
 C:/Users/jmau0/Desktop/Revature/Team2-CobraKai-Project2-master/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.dll
 C:/Users/jmau0/Desktop/Revature/Team2-CobraKai-Project2-master/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.pdb
+<<<<<<< HEAD
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/NUnit3.TestAdapter.dll
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/NUnit3.TestAdapter.pdb
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/nunit.engine.netstandard.dll
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Test.deps.json
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Test.runtimeconfig.json
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Test.runtimeconfig.dev.json
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Test.dll
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Test.pdb
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Domain.dll
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Domain.pdb
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csprojAssemblyReference.cache
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csproj.CoreCompileInputs.cache
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.AssemblyInfoInputs.cache
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.AssemblyInfo.cs
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csproj.CopyComplete
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.dll
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.pdb
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Data.dll
+C:/Revature/Project2/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Data.pdb
+=======
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
 /Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csprojAssemblyReference.cache
 /Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csproj.CoreCompileInputs.cache
 /Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.AssemblyInfoInputs.cache
@@ -36,6 +58,8 @@ C:/Users/jmau0/Desktop/Revature/Team2-CobraKai-Project2-master/Project2Solution/
 /Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Data.pdb
 /Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/bin/Debug/netcoreapp2.2/Project.Domain.pdb
 /Users/fredbrume/Desktop/Team2-CobraKai-Project2/Project2Solution/Project.Test/obj/Debug/netcoreapp2.2/Project.Test.csproj.CopyComplete
+<<<<<<< HEAD
+=======
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.csprojAssemblyReference.cache
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.csproj.CoreCompileInputs.cache
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.AssemblyInfoInputs.cache
@@ -55,3 +79,4 @@ C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\D
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Data.pdb
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\bin\Debug\netcoreapp2.2\Project.Domain.pdb
 C:\Revature\Project2\Team2-CobraKai-Project2\Project2Solution\Project.Test\obj\Debug\netcoreapp2.2\Project.Test.csproj.CopyComplete
+>>>>>>> a4916f1fc4e046ca03a10be690b3f82e90edbc68
