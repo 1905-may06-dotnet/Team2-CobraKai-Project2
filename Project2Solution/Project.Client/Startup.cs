@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -26,6 +27,11 @@ namespace Project.Client
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<Project.Data.Entities.CobraKaiDbContext>(optionsAction =>
+            optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<Project.Domain.IRepository, Project.Data.Repository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

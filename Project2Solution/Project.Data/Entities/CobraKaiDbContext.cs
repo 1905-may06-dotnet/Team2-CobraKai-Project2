@@ -13,6 +13,10 @@ namespace Project.Data.Entities
     {
         public CobraKaiDbContext()
         {
+
+        }
+        public CobraKaiDbContext(DbContextOptions<CobraKaiDbContext> options) : base(options)
+        {
         }
 
         public virtual DbSet<Entities.Journal> Journals { get; set; }
