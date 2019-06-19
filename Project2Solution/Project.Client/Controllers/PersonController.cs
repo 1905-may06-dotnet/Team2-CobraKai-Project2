@@ -16,7 +16,9 @@ namespace Project.Client.Controllers
     public class PersonController : ControllerBase
     {
         private readonly Lib.IRepository repository;
-     
+
+        private List<Person> personList = new List<Person>();
+
         public PersonController(Lib.IRepository repository)
         {
 
@@ -32,6 +34,10 @@ namespace Project.Client.Controllers
             IEnumerable<Person> persons = await Task.Run(() => Mapper.Map(repository.GetPersons()));
 
             return persons;
+        public ActionResult Get()
+        {
+            IEnumerable<Person> persons = Mapper.Map(repository.GetPersons());
+            return Content(persons.ToList()[0].Firstname);
 
         }
 
@@ -44,6 +50,9 @@ namespace Project.Client.Controllers
             Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
 
             return person;
+        public ActionResult<string> Get(int id)
+        {
+            return "value";
         }
 
         // POST api/values
@@ -61,6 +70,10 @@ namespace Project.Client.Controllers
         }
 
 
+        public void Post([FromBody] string value)
+        {
+        }
+
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -76,6 +89,11 @@ namespace Project.Client.Controllers
             if(rowAffected > 0) return Ok();
 
             return BadRequest();
+        }
+    }
+}
+        public void Delete(int id)
+        {
         }
     }
 }

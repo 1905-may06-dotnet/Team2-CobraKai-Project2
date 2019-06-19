@@ -26,6 +26,10 @@ namespace Project.Domain
         int UpdatePerson(Person person);
         int DeletePerson(int id);
 
+        void CreatePerson(Person person); //returns 1 if successful
+        void UpdatePerson(Person person);
+        void DeletePerson(int id);
+
         IEnumerable<PlayList> GetPlayLists();
         PlayList GetPlayListById(int id);
         PlayList GetPlayListByTitle(string title);
