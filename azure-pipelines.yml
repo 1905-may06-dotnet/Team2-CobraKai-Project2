@@ -54,10 +54,16 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'VSTest'
-    testResultsFiles: '*.trx'
-    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
-  displayName: 'Publish Test Results '
+    testResultsFormat: 'NUnit'
+    testResultsFiles: '**/TEST-*.xml'
+  displayName: 'Publish Test Results'
+
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'VSTest'
+#    testResultsFiles: '*.trx'
+#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
+#  displayName: 'Publish Test Results '
 
 #- task: AzureRmWebAppDeployment@4
 #  inputs:
