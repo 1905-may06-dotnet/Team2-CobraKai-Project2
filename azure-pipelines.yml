@@ -58,6 +58,13 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'NUnit'
+#    testResultsFiles: '**/TEST-*.xml'
+#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
+#  displayName: 'Publish Test Results'
+
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'VSTest'
