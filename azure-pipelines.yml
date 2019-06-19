@@ -16,6 +16,7 @@ variables:
 
 steps:
 
+#to add: sonar cloud prepare analysis
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'Project2Sonar'
@@ -33,6 +34,11 @@ steps:
 
 - script: dotnet test 
     --configuration $(buildConfiguration)
+    --no-build
+  workingDirectory: $(pathtosolution)
+  displayName: 'dotnet test'
+
+#to add: sonar cloud analyze and publish
     --logger trx
     --no-build
     /p:CollectCoverage=true
@@ -51,6 +57,13 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'NUnit'
+#    testResultsFiles: '**/TEST-*.xml'
+#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
+#  displayName: 'Publish Test Results'
 
 - task: PublishTestResults@2
   inputs:

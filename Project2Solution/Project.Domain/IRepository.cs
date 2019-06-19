@@ -22,6 +22,10 @@ namespace Project.Domain
 
         IEnumerable<Person> GetPersons();
         Person GetPersonById(int id);
+        int CreatePerson(Person person); //returns 1 if successful
+        int UpdatePerson(Person person);
+        int DeletePerson(int id);
+
         void CreatePerson(Person person); //returns 1 if successful
         void UpdatePerson(Person person);
         void DeletePerson(int id);

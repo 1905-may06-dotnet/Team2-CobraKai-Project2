@@ -16,7 +16,9 @@ namespace Project.Client.Controllers
     public class PersonController : ControllerBase
     {
         private readonly Lib.IRepository repository;
+
         private List<Person> personList = new List<Person>();
+
         public PersonController(Lib.IRepository repository)
         {
 
@@ -26,6 +28,12 @@ namespace Project.Client.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
         [Produces("application/json")]
+        public async Task<IEnumerable<Person>> Get()
+        {
+        
+            IEnumerable<Person> persons = await Task.Run(() => Mapper.Map(repository.GetPersons()));
+
+            return persons;
         public ActionResult Get()
         {
             IEnumerable<Person> persons = Mapper.Map(repository.GetPersons());
@@ -35,6 +43,13 @@ namespace Project.Client.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [Produces("application/json")]
+        public async Task<Person> Get([FromRoute]int id)
+        {
+            Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
+
+            return person;
         public ActionResult<string> Get(int id)
         {
             return "value";
@@ -42,6 +57,19 @@ namespace Project.Client.Controllers
 
         // POST api/values
         [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Person person)
+        {
+            if (ModelState.IsValid) return BadRequest();
+
+            int rowAffected = await Task.Run(() =>
+            repository.CreatePerson(Mapper.Map(person)));
+
+            if (rowAffected > 0) return Ok();
+
+            return BadRequest();
+        }
+
+
         public void Post([FromBody] string value)
         {
         }
@@ -54,6 +82,16 @@ namespace Project.Client.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+           int rowAffected = await Task.Run(()=> repository.DeletePerson(id));
+
+            if(rowAffected > 0) return Ok();
+
+            return BadRequest();
+        }
+    }
+}
         public void Delete(int id)
         {
         }

@@ -21,6 +21,11 @@ namespace Project.Data
             Save();
         }
         //adds new user
+
+        public int CreatePerson(Project.Domain.Person person)
+        {
+            _db.People.Add(Mapper.Map(person));
+            return Save();
         public void CreatePerson(Project.Domain.Person person)
         {
             _db.People.Add(Mapper.Map(person));
@@ -45,6 +50,10 @@ namespace Project.Data
             Save();
         }
         //deletes user
+        public int DeletePerson(int id)
+        {
+            _db.Remove(_db.People.Find(id));
+            return Save();
         public void DeletePerson(int id)
         {
             _db.Remove(_db.People.Find(id));
@@ -131,6 +140,10 @@ namespace Project.Data
             Save();
         }
         //updates user
+        public int UpdatePerson(Person person)
+        {
+            _db.Entry(_db.People.Find(person.Id)).CurrentValues.SetValues(Mapper.Map(person));
+            return Save();
         public void UpdatePerson(Person person)
         {
             _db.Entry(_db.People.Find(person.Id)).CurrentValues.SetValues(Mapper.Map(person));
