@@ -56,6 +56,7 @@ steps:
   inputs:
     testResultsFormat: 'NUnit'
     testResultsFiles: '**/TEST-*.xml'
+    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
   displayName: 'Publish Test Results'
 
 #- task: PublishTestResults@2
