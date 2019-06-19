@@ -31,9 +31,9 @@ bld/
 [Bb]uild[Ll]og.*
 
 # NUnit
-#*.VisualState.xml
-#TestResult.xml
-#nunit-*.xml
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
 
 # .NET Core
 project.lock.json
