@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Client.Entities
 {
-    public partial class Person
+    public class Person
     {
         public Person()
         {

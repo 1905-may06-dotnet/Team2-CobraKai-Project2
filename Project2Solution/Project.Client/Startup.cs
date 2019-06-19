@@ -1,54 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.HttpsPolicy;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Options;
+using Microsoft.Net.Http.Headers;
 
 namespace Project.Client
-{
-    public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public class Startup
         {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddDbContext<Project.Data.Entities.CobraKaiDbContext>(optionsAction =>
-            optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddScoped<Project.Domain.IRepository, Project.Data.Repository>();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
+            public Startup(IConfiguration configuration)
             {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                Configuration = configuration;
             }
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            public IConfiguration Configuration { get; }
+
+            // This method gets called by the runtime. Use this method to add services to the container.
+            public void ConfigureServices(IServiceCollection services)
+            {
+                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+                services.AddDbContext<Project.Data.Entities.CobraKaiDbContext>(optionsAction =>
+                optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+                services.AddScoped<Project.Domain.IRepository, Project.Data.Repository>();
+
+                services.AddCors(options =>
+                {
+                    options.AddDefaultPolicy(builder =>
+                    {
+                        builder.WithOrigins("file:///Users/fredbrume/Desktop/Client/index.html", "http://www.contoso.com")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header")
+                        .WithExposedHeaders("Content-Disposition", "Content-Length");
+
+                    });
+                    options.AddPolicy("Mypolicy", builder =>
+                    {
+                        builder.WithOrigins("*.azurewebsites.net");
+                    });
+
+
+                }
+
+                );
+            }
+
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+            {
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                    //app.UseMaintainCorsHeaders();
+                }
+                else
+                {
+                    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                    app.UseHsts();
+                }
+
+                app.UseHttpsRedirection();
+                app.UseMvc();
+            }
         }
     }
-}

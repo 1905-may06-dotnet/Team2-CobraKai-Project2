@@ -33,10 +33,10 @@ namespace Project.Data
             Save();
         }
         //adds new song
-        public void CreateSong(Project.Domain.Song song)
+        public int CreateSong(Project.Domain.Song song)
         {
             _db.Songs.Add(Mapper.Map(song));
-            Save();
+            return Save();
         }
         //deletes journal
         public void DeleteJournal(int id)
@@ -57,10 +57,10 @@ namespace Project.Data
             Save();
         }
         //deletes song
-        public void DeleteSong(int id)
+        public int DeleteSong(int id)
         {
             _db.Remove(_db.Songs.Find(id));
-            Save();
+            return Save();
         }
         //gets journal by journal id
         public Journal GetJournalById(int id)
@@ -143,10 +143,10 @@ namespace Project.Data
             Save();
         }
         //updates song
-        public void UpdateSong(Song song)
+        public int UpdateSong(Song song)
         {
             _db.Entry(_db.Songs.Find(song.Id)).CurrentValues.SetValues(Mapper.Map(song));
-            Save();
+            return Save();
         }
         //saves changes in database
         public int Save()

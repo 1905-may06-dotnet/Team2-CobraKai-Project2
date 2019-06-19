@@ -16,9 +16,9 @@ namespace Project.Domain
         IEnumerable<Song> GetSongs();
         Song GetSongById(int id);
         Song GetSongByTitle(string title);
-        void CreateSong(Song song); //return 1 if successful
-        void UpdateSong(Song song);
-        void DeleteSong(int id);
+        int CreateSong(Song song); //return 1 if successful
+        int UpdateSong(Song song);
+        int DeleteSong(int id);
 
         IEnumerable<Person> GetPersons();
         Person GetPersonById(int id);
