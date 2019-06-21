@@ -13,64 +13,64 @@ namespace Project.Client.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonController : ControllerBase
+    public class PlayListController : ControllerBase
     {
         private readonly Lib.IRepository repository;
 
-        public PersonController(Lib.IRepository repository)
+        public PlayListController(Lib.IRepository repository)
         {
 
             this.repository = repository;
         }
         // GET api/values
         [HttpGet]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public async Task<IEnumerable<Person>> Get()
+        public async Task<IEnumerable<Playlist>> Get()
         {
 
-            IEnumerable<Person> persons = await Task.Run(() => Mapper.Map(repository.GetPersons()));
+            IEnumerable<Playlist> plists = await Task.Run(() => Mapper.Map(repository.GetPlayLists()));
 
-            return persons;
+            return plists;
 
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public async Task<Person> Get([FromRoute]int id)
+        public async Task<Playlist> Get([FromRoute]int id)
         {
-            Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
+            Playlist plist = await Task.Run(() => Mapper.Map(repository.GetPlayListById(id)));
 
-            return person;
+            return plist;
         }
 
         // POST api/values
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Person person)
+        public async Task<IActionResult> Post([FromBody] Playlist plist)
         {
             if (ModelState.IsValid) return BadRequest();
 
             int rowAffected = await Task.Run(() =>
-            repository.CreatePerson(Mapper.Map(person)));
+            repository.CreatePlayList(Mapper.Map(plist)));
 
             if (rowAffected > 0) return Ok();
 
             return BadRequest();
         }
 
+
         //PUT api/values/5
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Person person)
+        public async Task<IActionResult> Put([FromBody] Playlist plist)
         {
             int rowAffected = await Task.Run(() =>
-            repository.UpdatePerson(Mapper.Map(person)));
+            repository.UpdatePlayList(Mapper.Map(plist)));
 
             if (rowAffected > 0) return Ok();
             return NoContent();
         }
-
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
