@@ -33,6 +33,7 @@ namespace Project.Test
             Assert.Pass();
         }
 
+        [Test]
         public void B_Read_1()
         {
             Project.Data.Repository repo = new Project.Data.Repository(db);

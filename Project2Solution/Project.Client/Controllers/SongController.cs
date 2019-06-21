@@ -69,10 +69,15 @@ namespace Project.Client.Controllers
         }
 
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //PUT api/values/5
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] Song song)
         {
+            int rowAffected = await Task.Run(() =>
+            repository.UpdateSong(Mapper.Map(song)));
+
+            if (rowAffected > 0) return Ok();
+            return NoContent();
         }
 
         // DELETE api/values/5
