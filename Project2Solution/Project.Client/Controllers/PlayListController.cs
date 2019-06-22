@@ -92,7 +92,7 @@ namespace Project.Client.Controllers
         {
             try
             {
-                int rowAffected = await Task.Run(() => repository.DeletePerson(id));
+                int rowAffected = await Task.Run(() => repository.DeletePlayList(id));
                 if (rowAffected > 0) return Ok();
                 return BadRequest();
             }
