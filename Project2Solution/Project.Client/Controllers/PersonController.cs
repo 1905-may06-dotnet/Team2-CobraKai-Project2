@@ -25,11 +25,6 @@ namespace Project.Client.Controllers
             this.repository = repository;
         }
 
-        /*public PersonController(Lib.IRepository repository, IEnumerable<Person> plist)
-        {
-            this.repository = repository;
-            this.plist = plist;
-        }*/
         // GET api/values
         [HttpGet]
         [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
@@ -48,9 +43,15 @@ namespace Project.Client.Controllers
         [Produces("application/json")]
         public async Task<Person> Get([FromRoute]int id)
         {
-            Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
-
-            return person;
+            try
+            {
+                Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
+                return person;
+            }
+            catch
+            {
+                return new Person(); //returns 200 status code w/ empty person object (id=0)
+            }
         }
 
         // POST api/values
@@ -91,14 +92,21 @@ namespace Project.Client.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if (!ModelState.IsValid) return BadRequest();
-            
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest();
 
-            int rowAffected = await Task.Run(() => repository.DeletePerson(id));
 
-            if (rowAffected > 0) return Ok();
+                int rowAffected = await Task.Run(() => repository.DeletePerson(id));
 
-            return NoContent();
+                if (rowAffected > 0) return Ok();
+
+                return BadRequest();
+            }
+            catch
+            {
+                return NoContent();
+            }
         }
     }
 }
