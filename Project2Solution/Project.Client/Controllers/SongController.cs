@@ -85,6 +85,8 @@ namespace Project.Client.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> Put([FromBody] Song song)
         {
+            if (!ModelState.IsValid) return BadRequest();
+
             int rowAffected = await Task.Run(() =>
             repository.UpdateSong(Mapper.Map(song)));
 
