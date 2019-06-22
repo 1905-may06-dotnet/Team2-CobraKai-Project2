@@ -13,6 +13,15 @@ namespace Project.Client.Entities
             // Playlist = new HashSet<Playlist>();
         }
 
+        public Person(string Email, string Firstname, string Lastname, string Username, string Password)
+        {
+            this.Email = Email;
+            this.Firstname = Firstname;
+            this.Lastname = Lastname;
+            this.Username = Username;
+            this.Password = Password;
+        }
+
         public int Id { get; set; }
         public string Email { get; set; }
         public string Firstname { get; set; }
