@@ -16,46 +16,97 @@ namespace Project.Client.Controllers
     public class PersonController : ControllerBase
     {
         private readonly Lib.IRepository repository;
-        private List<Person> personList = new List<Person>();
+
+        IEnumerable<Person> plist = new List<Person>();
+
         public PersonController(Lib.IRepository repository)
         {
 
             this.repository = repository;
         }
+
         // GET api/values
         [HttpGet]
         [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public ActionResult Get()
+        public async Task<IEnumerable<Person>> Get()
         {
-            IEnumerable<Person> persons = Mapper.Map(repository.GetPersons());
-            return Content(persons.ToList()[0].Firstname);
+
+            IEnumerable<Person> persons = await Task.Run(() => Mapper.Map(repository.GetPersons()));
+            return persons;
 
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [Produces("application/json")]
+        public async Task<Person> Get([FromRoute]int id)
         {
-            return "value";
+            try
+            {
+                Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
+                return person;
+            }
+            catch
+            {
+                return new Person(); //returns 200 status code w/ empty person object (id=0)
+            }
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(typeof(Person), StatusCodes.Status201Created)]
+        [Produces("application/json")]
+        public async Task<IActionResult> Post([FromBody] Person person)
         {
+            if (!ModelState.IsValid) return BadRequest();
+
+            int rowAffected = await Task.Run(() =>
+            repository.CreatePerson(Mapper.Map(person)));
+
+            if (rowAffected > 0) return Ok();
+
+            return BadRequest();
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //PUT api/values/5
+        [HttpPut]
+        [ProducesResponseType(typeof(Person), StatusCodes.Status202Accepted)]
+        [Produces("application/json")]
+        public async Task<IActionResult> Put([FromBody] Person person)
         {
+            if (!ModelState.IsValid) return BadRequest();
+
+            int rowAffected = await Task.Run(() =>
+            repository.UpdatePerson(Mapper.Map(person)));
+
+            if (rowAffected > 0) return Ok();
+            return NoContent();
         }
+
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [Produces("application/json")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest();
+
+
+                int rowAffected = await Task.Run(() => repository.DeletePerson(id));
+
+                if (rowAffected > 0) return Ok();
+
+                return BadRequest();
+            }
+            catch
+            {
+                return NoContent();
+            }
         }
     }
 }
