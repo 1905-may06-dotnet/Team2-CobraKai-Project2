@@ -15,10 +15,10 @@ namespace Project.Data
             _db = db;
         }
         //adds new journal
-        public void CreateJournal(Project.Domain.Journal journal)
+        public int CreateJournal(Project.Domain.Journal journal)
         {
             _db.Journals.Add(Mapper.Map(journal));
-            Save();
+            return Save();
         }
         //adds new user
         public int CreatePerson(Project.Domain.Person person)
@@ -27,10 +27,10 @@ namespace Project.Data
             return Save();
         }
         //adds new playlist
-        public void CreatePlayList(Project.Domain.PlayList playlist)
+        public int CreatePlayList(Project.Domain.PlayList playlist)
         {
             _db.Playlists.Add(Mapper.Map(playlist));
-            Save();
+            return Save();
         }
         //adds new song
         public int CreateSong(Project.Domain.Song song)
@@ -39,10 +39,10 @@ namespace Project.Data
             return Save();
         }
         //deletes journal
-        public void DeleteJournal(int id)
+        public int DeleteJournal(int id)
         {
             _db.Remove(_db.Journals.Find(id));
-            Save();
+            return Save();
         }
         //deletes user
         public int DeletePerson(int id)
@@ -51,10 +51,10 @@ namespace Project.Data
             return Save();
         }
         //deletes playlist
-        public void DeletePlayList(int id)
+        public int DeletePlayList(int id)
         {
             _db.Remove(_db.Playlists.Find(id));
-            Save();
+            return Save();
         }
         //deletes song
         public int DeleteSong(int id)
@@ -83,6 +83,11 @@ namespace Project.Data
         public Person GetPersonById(int id)
         {
             var per = _db.People.Where(p => p.Id == id).FirstOrDefault();
+            return Mapper.Map(per);
+        }//gets user by username
+        public Person GetPersonByUsername(string user)
+        {
+            var per = _db.People.Where(u => u.Username == user).FirstOrDefault();
             return Mapper.Map(per);
         }
         //gets all users
@@ -125,10 +130,10 @@ namespace Project.Data
             return _db.Songs.Select(s => Mapper.Map(s));
         }
         //updates journal
-        public void UpdateJournal(Journal journal)
+        public int UpdateJournal(Journal journal)
         {
             _db.Entry(_db.Journals.Find(journal.Id)).CurrentValues.SetValues(Mapper.Map(journal));
-            Save();
+            return Save();
         }
         //updates user
         public int UpdatePerson(Person person)
@@ -137,10 +142,10 @@ namespace Project.Data
             return Save();
         }
         //updates playlist
-        public void UpdatePlayList(PlayList playlist)
+        public int UpdatePlayList(PlayList playlist)
         {
             _db.Entry(_db.Playlists.Find(playlist.Id)).CurrentValues.SetValues(Mapper.Map(playlist));
-            Save();
+            return Save();
         }
         //updates song
         public int UpdateSong(Song song)

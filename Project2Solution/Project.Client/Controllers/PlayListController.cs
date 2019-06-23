@@ -13,94 +13,87 @@ namespace Project.Client.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonController : ControllerBase
+    public class PlayListController : ControllerBase
     {
         private readonly Lib.IRepository repository;
 
-        IEnumerable<Person> plist = new List<Person>();
-
-        public PersonController(Lib.IRepository repository)
+        public PlayListController(Lib.IRepository repository)
         {
 
             this.repository = repository;
         }
-
         // GET api/values
         [HttpGet]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public async Task<IEnumerable<Person>> Get()
+        public async Task<IEnumerable<Playlist>> Get()
         {
 
-            IEnumerable<Person> persons = await Task.Run(() => Mapper.Map(repository.GetPersons()));
-            return persons;
+            IEnumerable<Playlist> plists = await Task.Run(() => Mapper.Map(repository.GetPlayLists()));
+
+            return plists;
 
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public async Task<Person> Get([FromRoute]int id)
+        public async Task<Playlist> Get([FromRoute]int id)
         {
             try
             {
-                Person person = await Task.Run(() => Mapper.Map(repository.GetPersonById(id)));
-                return person;
+                Playlist plist = await Task.Run(() => Mapper.Map(repository.GetPlayListById(id)));
+                return plist;
             }
             catch
             {
-                return new Person(); //returns 200 status code w/ empty person object (id=0)
+                return new Playlist();
             }
         }
 
         // POST api/values
         [HttpPost]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status201Created)]
         [Produces("application/json")]
-        public async Task<IActionResult> Post([FromBody] Person person)
+        public async Task<IActionResult> Post([FromBody] Playlist plist)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             int rowAffected = await Task.Run(() =>
-            repository.CreatePerson(Mapper.Map(person)));
+            repository.CreatePlayList(Mapper.Map(plist)));
 
             if (rowAffected > 0) return Ok();
 
             return BadRequest();
         }
 
+
         //PUT api/values/5
         [HttpPut]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status202Accepted)]
         [Produces("application/json")]
-        public async Task<IActionResult> Put([FromBody] Person person)
+        public async Task<IActionResult> Put([FromBody] Playlist plist)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             int rowAffected = await Task.Run(() =>
-            repository.UpdatePerson(Mapper.Map(person)));
+            repository.UpdatePlayList(Mapper.Map(plist)));
 
             if (rowAffected > 0) return Ok();
             return NoContent();
         }
 
-
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Playlist), StatusCodes.Status200OK)]
         [Produces("application/json")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             try
             {
-                if (!ModelState.IsValid) return BadRequest();
-
-
                 int rowAffected = await Task.Run(() => repository.DeletePerson(id));
-
                 if (rowAffected > 0) return Ok();
-
                 return BadRequest();
             }
             catch

@@ -66,8 +66,9 @@ namespace Project.Client
                     app.UseHsts();
                 }
 
-                app.UseHttpsRedirection();
-                app.UseMvc();
-            }
+            app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseHttpsRedirection();
+            app.UseMvc();
         }
     }
