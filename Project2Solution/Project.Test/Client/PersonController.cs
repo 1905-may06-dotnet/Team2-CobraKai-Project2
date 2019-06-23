@@ -25,10 +25,17 @@ namespace Project.Test.Client
             _client = _server.CreateClient();
         }
 
-        /*[Test]
-        public async Task Post()
+        /*public async Task<Project.Client.Entities.Person> TestGet()
         {
-            var request = new HttpRequestMessage(new HttpMethod("POST"), "/api/Person/");
+            var response = await _client.GetAsync("/");
+            response.EnsureSuccessStatusCode();
+            
+            return null;
+            
+        }*/
+
+        //Project.Client.Entities.Person p;
+        //Project.Data.Entities.CobraKaiDbContext db = new Project.Data.Entities.CobraKaiDbContext();
 
             var response = await _client.SendAsync(request);
 
