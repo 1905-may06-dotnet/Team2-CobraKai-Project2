@@ -230,17 +230,21 @@ namespace Project.Client {
 
         }
 
-        public static async Task Download ( string @Location, int? maxResults = 5, bool Direct = false ) {
+        /// <summary>
+        /// File transfer of media file to local storage
+        /// </summary>
+        /// <param name="OutputFolder">Full path including file name (no file extension)</param>
+        /// <returns>Download Task</returns>
 
+        public static async Task Download ( string OutputFolder ) {
 
+            var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
             BlobContinuationToken continueToken = null;
-            IList < Task > downloads = new List < Task > ();
-            var AssetName = ( Path.GetFileName ( @Location ).Split ( '.' ) [ 0 ] );
-            var @path = Location.Substring ( 0, @Location.LastIndexOf ( @"\" ) + 1 );
+            Task download                       = null;
 
-            if ( Direct && ! Directory.Exists ( @Location ) ) Directory.CreateDirectory ( @path );
+            if ( ! Directory.Exists ( @OutputFolder ) ) Directory.CreateDirectory ( @OutputFolder );
 
-            var asset = await _client.Assets.ListContainerSasAsync ( 
+            var assetSasContainer = await _client.Assets.ListContainerSasAsync ( 
 
                 _configuration.ResourceGroup, 
                 _configuration.AccountName, 
@@ -250,52 +254,129 @@ namespace Project.Client {
                 
             );
 
-            var container = new CloudBlobContainer ( new Uri ( asset.AssetContainerSasUrls [ 0 ] ) );
+            var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
 
             do {
 
-                var segment = await container.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, maxResults, continueToken, null, null );
+                var segments = 
+                    await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
 
-                foreach ( var element in segment.Results ) {
+                foreach ( var segment in segments.Results ) {
 
-                    var blob = ( CloudBlockBlob ) element;
+                    var blobBlock = ( CloudBlockBlob ) segment;
 
-                    if ( blob != null ) {
-
-                        downloads.Add ( blob.DownloadToFileAsync ( AssetName, FileMode.Create ) );
-
-                    }
+                    if ( blobBlock != null )
+                        download = ( blobBlock.DownloadToFileAsync ( Path.Combine ( @OutputFolder, blobBlock.Name ), FileMode.Create ) );
 
                 }
 
-                continueToken = segment.ContinuationToken;
+                continueToken = segments.ContinuationToken;
 
-            } while ( continueToken == null );
+            } while ( continueToken != null );
 
-            await Task.WhenAll ( downloads );
+            await Task.WhenAny ( download );
 
         }
 
-        public static async Task < StreamingLocator > Stream ( string assetName, string streamingEndpointName ) {
+        /// <summary>
+        /// Stream transfer of media file to local storage
+        /// </summary>
+        /// <param name="stream">Stream of the song to download</param>
+        /// <param name="OutputFolder">Full path including file name (no file extension)</param>
+        /// <returns></returns>
+
+        public static async Task < Stream > Download ( string OutputFolder, Stream stream ) {
+
+            var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
+            BlobContinuationToken continueToken = null;
+            Task < Stream > download            = null;
+
+            var assetSasContainer = await _client.Assets.ListContainerSasAsync ( 
+
+                _configuration.ResourceGroup, 
+                _configuration.AccountName, 
+                AssetName, 
+                permissions: AssetContainerPermission.Read,
+                expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime () 
+                
+            );
+
+            var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
+
+            do {
+
+                var segments = 
+                    await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
+
+                foreach ( var segment in segments.Results ) {
+
+                    var blobBlock = ( CloudBlockBlob ) segment;
+
+                    if ( blobBlock != null )
+                        download = ( Task < Stream > ) blobBlock.UploadFromStreamAsync ( stream );
+
+                }
+
+                continueToken = segments.ContinuationToken;
+
+            } while ( continueToken != null );
+
+            await Task.WhenAny ( download );
+
+            return download.Result;
+
+        }
+
+        public static async Task < IList < string > > Stream ( string assetName, string streamingEndpointName ) {
 
             var streamingUrls = new List < string > ();
-            
 
             var locator = await _client.StreamingLocators.CreateAsync (
             
                 _configuration.ResourceGroup,
                 _configuration.AccountName,
-                "locator-" + Guid.NewGuid (),
+                "locator-" + assetName,
                 new StreamingLocator {
 
-                    AssetName = assetName,
+                    AssetName           = assetName,
                     StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
 
                 }
                 
             );
 
-            return null;
+            var streamingEndpoint = await _client.StreamingEndpoints.GetAsync (
+            
+                _configuration.ResourceGroup,
+                _configuration.AccountName,
+                streamingEndpointName
+                
+            );
+
+            var paths = await _client.StreamingLocators.ListPathsAsync (
+            
+                _configuration.ResourceGroup,
+                _configuration.AccountName,
+                "locator-" + assetName
+                
+            );
+
+            foreach ( var path in paths.StreamingPaths )
+
+                streamingUrls.Add (
+                
+                    new UriBuilder {
+
+                        Scheme = "https",
+                        Host = streamingEndpoint.HostName,
+                        Path = path.Paths [ 0 ]
+
+                    }.ToString ()
+                    
+                );
+
+
+            return streamingUrls;
 
         }
 
