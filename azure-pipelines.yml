@@ -12,10 +12,11 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathtosolution: 'Project2Solution'
-  #pathtoproject: 'Project2Solution/Library'
+  #pathtoproject: 'Project2Solution/Project2Solution/Project.Client'
 
 steps:
 
+#to add: sonar cloud prepare analysis
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'Project2Sonar'
@@ -51,6 +52,13 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'NUnit'
+#    testResultsFiles: '**/TEST-*.xml'
+#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
+#  displayName: 'Publish Test Results'
 
 - task: PublishTestResults@2
   inputs:
