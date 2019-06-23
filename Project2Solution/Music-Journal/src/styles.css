@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-image:url("/assets/images/music_journal_bg.jpg");
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
