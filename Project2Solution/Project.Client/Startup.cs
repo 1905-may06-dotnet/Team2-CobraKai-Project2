@@ -22,43 +22,38 @@ namespace Project.Client
                 Configuration = configuration;
             }
 
-            public IConfiguration Configuration { get; }
+		// This method gets called by the runtime. Use this method to add services to the container.
+		readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-            // This method gets called by the runtime. Use this method to add services to the container.
-            public void ConfigureServices(IServiceCollection services)
-            {
-                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+		public IConfiguration Configuration { get; }
 
-                services.AddDbContext<Project.Data.Entities.CobraKaiDbContext>(optionsAction =>
-                optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
 
-                services.AddScoped<Project.Domain.IRepository, Project.Data.Repository>();
+			services.AddCors(options =>
+			{
+				options.AddPolicy(MyAllowSpecificOrigins,
+					builder => builder.AllowAnyOrigin()
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowAnyOrigin()
+					.WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header")
+					.WithExposedHeaders("Content-Disposition", "Content-Length"));
 
-                services.AddCors(options =>
-                {
-                    options.AddDefaultPolicy(builder =>
-                    {
-                        builder.WithOrigins("file:///Users/fredbrume/Desktop/Client/index.html", "http://www.contoso.com")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowAnyOrigin()
-                        .WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header")
-                        .WithExposedHeaders("Content-Disposition", "Content-Length");
-
-                    });
-                    options.AddPolicy("Mypolicy", builder =>
-                    {
-                        builder.WithOrigins("*.azurewebsites.net");
-                    });
+			});
 
 
-                }
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-                );
-            }
+			services.AddDbContext<Project.Data.Entities.CobraKaiDbContext>(optionsAction =>
+			optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-            public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+			services.AddScoped<Project.Domain.IRepository, Project.Data.Repository>();
+		}
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
             {
                 if (env.IsDevelopment())
                 {
