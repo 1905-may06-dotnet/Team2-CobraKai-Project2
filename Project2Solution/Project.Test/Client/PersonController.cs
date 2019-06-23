@@ -26,7 +26,9 @@ namespace Project.Test.Client
         {
             var response = await _client.GetAsync("/");
             response.EnsureSuccessStatusCode();
-
+            
+            return null;
+            
         }*/
 
         //Project.Client.Entities.Person p;
