@@ -76,5 +76,6 @@ namespace Project.Client
 
         public static IEnumerable<Lib.PlayList> Map(IEnumerable<Project.Client.Entities.Playlist> plists) => plists.Select(Map);
         public static IEnumerable<Project.Client.Entities.Playlist> Map(IEnumerable<Lib.PlayList> plists) => plists.Select(Map);
+
     }
 }
