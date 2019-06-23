@@ -25,7 +25,7 @@ namespace Project.Test.Client
             _client = _server.CreateClient();
         }
 
-        [Test]
+        /*[Test]
         public async Task Post()
         {
             var request = new HttpRequestMessage(new HttpMethod("POST"), "/api/Person/");
@@ -45,7 +45,7 @@ namespace Project.Test.Client
 
             response.EnsureSuccessStatusCode();
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-        }
+        }*/
 
     }
 }
