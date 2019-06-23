@@ -22,12 +22,12 @@ namespace Project.Test.Client
             _client = _server.CreateClient();
         }
 
-        public async Task<Project.Client.Entities.Person> TestGet()
+        /*public async Task<Project.Client.Entities.Person> TestGet()
         {
             var response = await _client.GetAsync("/");
             response.EnsureSuccessStatusCode();
 
-        }
+        }*/
 
         //Project.Client.Entities.Person p;
         //Project.Data.Entities.CobraKaiDbContext db = new Project.Data.Entities.CobraKaiDbContext();
