@@ -8,6 +8,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     NavmenuComponent,
     LoginComponent,
     HomeComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
