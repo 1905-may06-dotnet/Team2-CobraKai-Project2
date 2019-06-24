@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         //user will be registered
 
 
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/Home');
       }
     });
 
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickBack() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/Login');
   }
 
   ngOnInit() {
