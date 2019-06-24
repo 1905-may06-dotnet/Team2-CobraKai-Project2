@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     if(validate == true){
       this.isUserLoggedIn == true;
 
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/Home');
 
 
     }else {

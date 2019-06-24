@@ -36,8 +36,6 @@ AuthenticateUser(personAuth: Person, response: any) : boolean {
       if(personAuth.username == person.username
         && personAuth.password == person.password){
 
-          console.log("YES");
-
           validate = true;
 
           break
