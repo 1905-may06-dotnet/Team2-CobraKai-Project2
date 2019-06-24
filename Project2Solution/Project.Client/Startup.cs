@@ -41,7 +41,7 @@ namespace Project.Client
 					    .WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header")
 					    .WithExposedHeaders("Content-Disposition", "Content-Length"));
 
-                    options.AddPolicy("Mypolicy", builder =>
+                    options.AddPolicy(MyAllowSpecificOrigins, builder =>
                     {
                         builder.WithOrigins("*.azurewebsites.net");
                     });

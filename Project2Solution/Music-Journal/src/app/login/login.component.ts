@@ -10,12 +10,9 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService : LoginService, private router: Router) { 
-    
-  }
+  constructor(private loginService : LoginService, private router: Router) { }
 
   person: Person = {
 
@@ -29,16 +26,14 @@ export class LoginComponent implements OnInit {
 
   @Input()isUserLoggedIn : boolean = false;
 
-  onClickRegister() {
-    this.router.navigateByUrl('/register');
-  }
-
   onSubmit() {
 
-    console.log("Hello world!");
+    alert('Test');
 
     this.loginService.GetUsers().then(result => {
     let validate : boolean =  this.loginService.AuthenticateUser(this.person, result);
+
+ 
 
     if(validate == true){
       this.isUserLoggedIn == true;
