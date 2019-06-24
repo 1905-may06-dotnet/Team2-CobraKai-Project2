@@ -23,7 +23,10 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AppComponent,
+    RegisterComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

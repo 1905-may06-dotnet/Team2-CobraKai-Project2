@@ -41,8 +41,11 @@ namespace Project.Client
 					    .WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header")
 					    .WithExposedHeaders("Content-Disposition", "Content-Length"));
 
-		    	});
-
+                    options.AddPolicy("Mypolicy", builder =>
+                    {
+                        builder.WithOrigins("*.azurewebsites.net");
+                    });
+                });
 
 			    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

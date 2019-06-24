@@ -15,7 +15,7 @@ namespace ConsumeApi
                 //3. create the URL that needs to used to access the resource
                 client.BaseAddress = new Uri("https://localhost:44361/api/person");
                 //4. call the controller which has action to provide resource
-                var response = client.GetAsync("values");
+                var response = client.GetAsync("person");
                 //5. Async tasks needed to be awaited
                 response.Wait();
                 //6. Get the result set

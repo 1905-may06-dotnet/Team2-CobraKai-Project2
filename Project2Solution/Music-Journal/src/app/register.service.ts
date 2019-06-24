@@ -43,8 +43,7 @@ EnsureNewUsername(personAuth: Person, response: any) : boolean {
 }
 
 GetUsers() {
-
-  return this.http.get(this.personDocumentPath,httpOptions).toPromise();
+    return this.http.get(this.personDocumentPath,httpOptions).toPromise();
 }
 
 }
