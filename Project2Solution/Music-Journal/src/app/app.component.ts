@@ -11,6 +11,6 @@ export class AppComponent {
 
   constructor(private router: Router){
 
-    this.router.navigateByUrl('/login');
+   this.router.navigateByUrl('/login');
   }
 }
