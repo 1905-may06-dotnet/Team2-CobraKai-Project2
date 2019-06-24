@@ -26,10 +26,15 @@ export class LoginComponent implements OnInit {
 
   @Input()isUserLoggedIn : boolean = false;
 
+  onClickRegister() {
+    this.router.navigateByUrl('/Register');
+  }
+
   onSubmit() {
 
     this.loginService.GetUsers().then(result => {
     let validate : boolean =  this.loginService.AuthenticateUser(this.person, result);
+ 
 
     if(validate == true){
       this.isUserLoggedIn == true;
@@ -38,7 +43,6 @@ export class LoginComponent implements OnInit {
 
 
     }else {
-
     }
 
     });

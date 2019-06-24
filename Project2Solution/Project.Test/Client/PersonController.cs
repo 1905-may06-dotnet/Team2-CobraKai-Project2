@@ -37,7 +37,7 @@ namespace Project.Test.Client
         //Project.Client.Entities.Person p;
         //Project.Data.Entities.CobraKaiDbContext db = new Project.Data.Entities.CobraKaiDbContext();
 
-        /*[Test]
+       /*[Test]
         public async Task Get()
         {
             var request = new HttpRequestMessage(new HttpMethod("GET"), "/api/Person/");
