@@ -121,8 +121,7 @@ namespace Project.Client {
 
             if ( asset == null ) { 
 
-                var uploadId  = Guid.NewGuid ().ToString ();
-                var output    = await _client.Assets.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName + uploadId, new Asset () );
+                var output    = await _client.Assets.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName, new Asset () );
 
                 asset = await _client.Assets.CreateOrUpdateAsync (
 
@@ -152,10 +151,10 @@ namespace Project.Client {
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     TransformName,
-                    "Job-" + AssetName + uploadId,
+                    "Job-" + AssetName,
                     new Job {
 
-                        Input = new JobInputAsset ( assetName: AssetName ),
+                        Input   = new JobInputAsset ( assetName: AssetName ),
                         Outputs = new JobOutput [] { new JobOutputAsset ( output.Name ) },
 
                     }
@@ -183,8 +182,7 @@ namespace Project.Client {
 
             if ( asset == null ) { 
 
-                var uploadId  = Guid.NewGuid ().ToString ();
-                var output    = await _client.Assets.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, "Output-" + uploadId, new Asset () );
+                var output    = await _client.Assets.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName, new Asset () );
 
                 asset = await _client.Assets.CreateOrUpdateAsync (
 
@@ -214,10 +212,10 @@ namespace Project.Client {
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     TransformName,
-                    "Job-" + uploadId,
+                    "Job-" + AssetName,
                     new Job {
 
-                        Input = new JobInputAsset ( assetName: AssetName ),
+                        Input   = new JobInputAsset ( assetName: AssetName ),
                         Outputs = new JobOutput [] { new JobOutputAsset ( output.Name ) },
 
                     }
