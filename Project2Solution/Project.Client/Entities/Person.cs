@@ -5,12 +5,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Client.Entities
 {
-    public partial class Person
+    public class Person
     {
         public Person()
         {
             // Journal = new HashSet<Journal>();
             // Playlist = new HashSet<Playlist>();
+        }
+
+        public Person(string Email, string Firstname, string Lastname, string Username, string Password)
+        {
+            this.Email = Email;
+            this.Firstname = Firstname;
+            this.Lastname = Lastname;
+            this.Username = Username;
+            this.Password = Password;
         }
 
         public int Id { get; set; }

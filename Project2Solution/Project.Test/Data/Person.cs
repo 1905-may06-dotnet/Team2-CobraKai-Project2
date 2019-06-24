@@ -17,6 +17,7 @@ namespace Project.Test
         {
             a = new Project.Data.Repository(db);
             unitTest = new Project.Domain.Person();
+            unitTest.Username = "unittest";
             a.CreatePerson(unitTest);
             Assert.Pass();
         }
@@ -42,6 +43,20 @@ namespace Project.Test
             }
             unitTest = a.GetPersonById(id);
             Assert.AreEqual(unitTest.Email, null);
+        }
+
+        //test GetPersonbyUsername(string user)
+        [Test]
+        public void B_Read_3()
+        {
+            a = new Project.Data.Repository(db);
+            int id = 0;
+            foreach (var i in a.GetPersons())
+            {
+                id = i.Id;
+            }
+            unitTest = a.GetPersonByUsername("unittest");
+            Assert.AreEqual(id, unitTest.Id);
         }
 
         [Test]
