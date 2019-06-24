@@ -23,10 +23,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() : void {
 
-    alert(this.person.username);
-
-
-
     this.registerservice.GetUsers().then(result => {
       let validate : boolean = this.registerservice.EnsureNewUsername(this.person, result);
 
@@ -36,8 +32,9 @@ export class RegisterComponent implements OnInit {
       }
       else {
         //user will be registered
-
-
+        this.registerservice.AddUser(this.person)
+        .subscribe();
+        //user will be navigated to the home page
         this.router.navigateByUrl('/Home');
       }
     });
@@ -46,7 +43,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickBack() {
-    this.router.navigateByUrl('/Login');
+    this.router.navigateByUrl('/login');
   }
 
   ngOnInit() {
