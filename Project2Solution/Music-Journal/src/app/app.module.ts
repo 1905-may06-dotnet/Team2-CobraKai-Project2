@@ -8,7 +8,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { PlaylistComponent } from './playlist/playlist.component';
-import { RegisterComponent } from './register/register.component';
+import { SongComponent } from './song/song.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     HomeComponent,
     PlaylistComponent,
-    RegisterComponent
+    SongComponent
   ],
   imports: [
     BrowserModule,
