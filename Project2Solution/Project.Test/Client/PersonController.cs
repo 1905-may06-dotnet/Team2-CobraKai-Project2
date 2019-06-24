@@ -37,12 +37,6 @@ namespace Project.Test.Client
         //Project.Client.Entities.Person p;
         //Project.Data.Entities.CobraKaiDbContext db = new Project.Data.Entities.CobraKaiDbContext();
 
-            var response = await _client.SendAsync(request);
-
-            response.EnsureSuccessStatusCode();
-            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-        }
-
         [Test]
         public async Task Get()
         {
