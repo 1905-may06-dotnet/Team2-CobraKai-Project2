@@ -1,27 +1,26 @@
 
 <div class="logincontainer">
-    <form #userForm="ngForm" (ngSubmit) ="onSubmit()">
-        <div class="imgcontainer">
-          <img src="img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
+  <form #userForm="ngForm" (ngSubmit) ="onSubmit()">
+      <div class="imgcontainer">
+        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+      </div>
 
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input [(ngModel)]="person.username" type="text" placeholder="Enter Username"  name="username" required>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input [(ngModel)]="person.username" type="text" placeholder="Enter Username"  name="username" required>
 
-          <label for="psw"><b>Password</b></label>
-          <input  [(ngModel)]="person.password" type="password" placeholder="Enter Password" name="password" required>
+        <label for="psw"><b>Password</b></label>
+        <input  [(ngModel)]="person.password" type="password" placeholder="Enter Password" name="password" required>
 
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
 
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn" (click)="onClickRegister()">Register</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-      </form>
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn" (click)="onClickRegister()">Register</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
 </div>
-
