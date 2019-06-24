@@ -1,7 +1,7 @@
 <nav id="drawer" class="nav">
   <ul class="nav__list">
     <li *ngFor = "let item of menu" class="nav__item">
-      <a href="#" class="focus" routerLink="/playlist" >
+      <a href="#" class="focus" routerLink="/{{item}}" >
           {{item}}
       </a></li>
   </ul>
