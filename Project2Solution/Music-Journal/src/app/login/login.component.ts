@@ -46,10 +46,6 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/home');
 
 
-      // let loginContainer = document.querySelector('.logincontainer');
-      // loginContainer.Visi
-
-
     }else {
 
     }

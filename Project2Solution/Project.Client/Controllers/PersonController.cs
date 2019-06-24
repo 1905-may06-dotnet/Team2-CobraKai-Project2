@@ -8,6 +8,7 @@ using Project.Client.Entities;
 using Project.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 
 namespace Project.Client.Controllers
 {
@@ -26,6 +27,7 @@ namespace Project.Client.Controllers
         }
 
         // GET api/values
+        [EnableCors("_myAllowSpecificOrigins")]
         [HttpGet]
         [ProducesResponseType(typeof(Person), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
