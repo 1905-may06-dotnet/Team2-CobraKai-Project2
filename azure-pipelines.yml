@@ -17,82 +17,62 @@ variables:
 
 steps:
 
-- task: Npm@1
+#to add: sonar cloud prepare analysis
+- task: SonarCloudPrepare@1
   inputs:
-    command: 'install'
-    workingDir: $(pathtoangular)
-  displayName: 'Install NPM'
+    SonarCloud: 'Project2Sonar'
+    organization: 'danielcoombs005-github'
+    scannerMode: 'MSBuild'
+    projectKey: '559846baffd6aa29690f5d036d93e4eafdf4c166'
+    extraProperties: |
+      sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
+      sonar.cs.vstest.reportsPaths="$(Build.ArtifactStagingDirectory)/test/*.trx"
+  displayName: 'Sonar Prepare Analysis'
 
-- task: Npm@1
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: $(pathtosolution)
+- script: dotnet test 
+    --configuration $(buildConfiguration)
+    --logger trx
+    --no-build
+    /p:CollectCoverage=true
+    /p:CoverletOutputFormat=opencover
+    /p:CoverletOutput='$(Build.ArtifactStagingDirectory)/coverage/'
+  workingDirectory: $(pathtosolution)
+  displayName: 'dotnet test'
+
+- task: DotNetCoreCLI@2
   inputs:
-    command: 'custom'
-    workingDir: '$(pathtoangular)'
-    customCommand: 'run build -- --prod'
-  displayName: 'Build NPM'
+      command: 'publish'
+      publishWebProjects: true
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '*.trx'
+    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
+  displayName: 'Publish Test Results '
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'connectiondc'
+    appType: 'webApp'
+    WebAppName: '' #to add
+    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
+
+- task: DotNetCoreCLI@2
+  inputs:
+   command: publish
+   publishWebProjects: false
+   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+   zipAfterPublish: True
 
 - task: PublishBuildArtifacts@1
-  inputs:
-    ArtifactName: 'angular'
-    targetPath: '$(pathtoangular)/dist'
-  displayName: 'Publish NPM'
-
-#to add: sonar cloud prepare analysis
-#- task: SonarCloudPrepare@1
-#  inputs:
-#    SonarCloud: 'Project2Sonar'
-#    organization: 'danielcoombs005-github'
-#    scannerMode: 'MSBuild'
-#    projectKey: '559846baffd6aa29690f5d036d93e4eafdf4c166'
-#    extraProperties: |
-#      sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
-#      sonar.cs.vstest.reportsPaths="$(Build.ArtifactStagingDirectory)/test/*.trx"
-#  displayName: 'Sonar Prepare Analysis'
-
-#- script: dotnet build --configuration $(buildConfiguration)
-#  displayName: 'dotnet build $(buildConfiguration)'
-#  workingDirectory: $(pathtosolution)
-
-#- script: dotnet test 
-#    --configuration $(buildConfiguration)
-#    --logger trx
-#    --no-build
-#    /p:CollectCoverage=true
-#    /p:CoverletOutputFormat=opencover
-#    /p:CoverletOutput='$(Build.ArtifactStagingDirectory)/coverage/'
-#  workingDirectory: $(pathtosolution)
-#  displayName: 'dotnet test'
-
-#- task: DotNetCoreCLI@2
-#  inputs:
-#      command: 'publish'
-#      publishWebProjects: true
-
-#- task: SonarCloudAnalyze@1
-
-#- task: SonarCloudPublish@1
-#  inputs:
-#    pollingTimeoutSec: '300'
-
-#- task: PublishTestResults@2
-#  inputs:
-#    testResultsFormat: 'VSTest'
-#    testResultsFiles: '*.trx'
-#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
-#  displayName: 'Publish Test Results '
-
-#- task: AzureRmWebAppDeployment@4
-#  inputs:
-#    ConnectionType: 'AzureRM'
-#    azureSubscription: 'connectiondc'
-#    appType: 'webApp'
-#    WebAppName: '' #to add
-#    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
-
-#- task: DotNetCoreCLI@2
-#  inputs:
-#   command: publish
-#   publishWebProjects: True
-#   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#   zipAfterPublish: True
-
-#- task: PublishBuildArtifacts@1
