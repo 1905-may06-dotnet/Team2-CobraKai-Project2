@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
         .subscribe();
         //user will be navigated to the home page
         this.router.navigateByUrl('/Home');
+        alert('Welcome to Music Journal, '+this.person.username+'!');
       }
     });
 
