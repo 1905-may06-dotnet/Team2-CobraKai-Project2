@@ -117,9 +117,9 @@ namespace Project.Data
             return Mapper.Map(song);
         }
         //gets song by title of song
-        public Song GetSongByTitle(string title)
+        public Song GetSongByTitle(string title, string artist)
         {
-            var song = _db.Songs.Where(s => s.Title == title).FirstOrDefault();
+            var song = _db.Songs.Where(s => s.Title == title && s.Artist == artist).FirstOrDefault();
             return Mapper.Map(song);
         }
         //gets all songs

@@ -12,7 +12,7 @@
         //gets or sets song's genre
         public string Genre { get; set; }
         //gets or sets size of song
-        public decimal Size { get; set; }
+        public string Size { get; set; }
         //gets or sets length of song (MM:SS)
         public string Length { get; set; }
         //gets or sets release date of song (YYYY)
