@@ -16,25 +16,11 @@ variables:
   pathtoapi: 'Project2Solution/Project.Client'
 
 steps:
-- task: UseNode@1
-  displayName: Ensure Node installed
+
+- task: Npm@1
   inputs:
-    version: '10.x'
-
-- script: npm ci
-  displayName: Install NPM deps
-
-- script: npm run build:ci
-  displayName: Angular build production
-
-- script: npm run lint
-  displayName: Angular lint
-
-- script: npm run test:ci
-  displayName: Angular test
-
-- script: npm run e2e:ci
-  displayName: Angular end-to-end test
+    command: 'install'
+    workingDir: $(pathtoangular)
 
 
 #to add: sonar cloud prepare analysis
