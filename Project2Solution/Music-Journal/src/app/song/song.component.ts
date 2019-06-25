@@ -14,7 +14,7 @@ export class SongComponent implements OnInit {
 
 
   song: Song  = {
-
+      id:0,
       Title: "",
       Artist: "",
       Genre: "",
