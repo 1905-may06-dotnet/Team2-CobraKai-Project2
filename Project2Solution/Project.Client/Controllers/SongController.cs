@@ -33,24 +33,24 @@ namespace Project.Client.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
+        [HttpGet("{title}/{artist}")]
         [ProducesResponseType(typeof(Song), StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public async Task<Song> Get([FromRoute]int id)
+        public async Task<Song> Get([FromRoute]string title, string artist)
         {
             try
             {
-                Song song = await Task.Run(() => Mapper.Map(repository.GetSongById(id)));
+                Song song = await Task.Run(() => Mapper.Map(repository.GetSongByTitle(title, artist)));
                 return song;
             }
             catch
             {
-                return new Song();
+                return null;
             }
         }
 
         // POST api/values
-        [EnableCors]// it will use default policy
+    
         [HttpPost]
         [ProducesResponseType(typeof(Song), StatusCodes.Status201Created)]
         [Produces("application/json")]

@@ -1,12 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild, Component, OnInit, AfterViewInit } from '@angular/core';
+import { SongComponent } from '../song/song.component';
 import * as $ from 'jquery';
 
 @Component({
   selector: 'app-playlist',
   templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css']
+  styleUrls: ['./playlist.component.css'],
+
 })
-export class PlaylistComponent implements OnInit {
+
+export class PlaylistComponent implements OnInit, AfterViewInit {
+
+  show : string = "";
+
+  ngAfterViewInit(): void {
+
+    console.log(SongComponent.name);
+  }
+
+   @ViewChild(SongComponent, {static: false}) child !: SongComponent;
 
   constructor() { }
 
@@ -15,8 +27,6 @@ export class PlaylistComponent implements OnInit {
   }
 
   toggleAccordion() {
-
-    console.log("Fred Brume");
 
     $('.accordion').next().toggle(function() {
       $(this).animate({

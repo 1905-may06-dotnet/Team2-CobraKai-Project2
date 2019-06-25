@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { PlaylistComponent } from './playlist/playlist.component';
@@ -32,6 +32,8 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule,
     CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA9dF1JYHmhLtQtf2WsHOIW32tJSPrvOxw'

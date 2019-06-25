@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Person } from './models/person';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Access-Control-Allow-Origin': '*',
     'Authorization': 'my-auth-token',
   }) };
 
@@ -23,9 +21,7 @@ export class LoginService {
   private personDocumentPath : string = this.basePath + this.personDocument;
 
 
-constructor(private http: HttpClient, private router: Router) { }
-
-
+constructor(private http: HttpClient) { }
 
 AuthenticateUser(personAuth: Person, response: any) : boolean {
 
@@ -45,10 +41,6 @@ AuthenticateUser(personAuth: Person, response: any) : boolean {
     }
 
     return validate;
-}
-
-RedirectToRegister() {
-  this.router.navigateByUrl('/register');
 }
 
 GetUsers() {

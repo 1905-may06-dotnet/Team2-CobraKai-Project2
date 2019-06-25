@@ -9,10 +9,11 @@ import { SignoutComponent } from './signout/signout.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/Login', pathMatch: 'full',},
+
   { path: 'Home', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Playlist', component: PlaylistComponent },
+  { path: '', redirectTo: '/Login', pathMatch: 'full'},
   { path: 'Register', component: RegisterComponent},
   { path: 'About Us', component: AboutusComponent},
   { path: 'Sign Out', component: SignoutComponent}
