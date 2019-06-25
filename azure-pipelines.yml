@@ -30,7 +30,12 @@ steps:
     customCommand: 'run-script build'
   displayName: 'Build NPM'
 
-
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    appType: 'webApp'
+    WebAppName: 'musicjournal'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
 
 - task: PublishBuildArtifacts@1
   inputs:
