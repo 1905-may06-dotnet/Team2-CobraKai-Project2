@@ -62,15 +62,25 @@ namespace Project.Client.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(Song), StatusCodes.Status201Created)]
         [Produces("application/json")]
-        public async Task<IActionResult> Post([FromBody] Song song)
+        public IActionResult Post([FromBody] Song song)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             if (song != null)
             {
-                int rowAffected = await Task.Run(() => repository.CreateSong(Mapper.Map(song)));
+                return Ok();
+                //var songT = await Task.Run(() => repository.GetSongByTitle(song.Title));
 
-                return Created("", song);
+                //if(songT == null)
+                //{
+                //    int rowAffected = await Task.Run(() => repository.CreateSong(Mapper.Map(song)));
+
+                //    return Created("", song);
+                //}else
+                //{
+                //    return null;
+                //}
+
             }
 
             return BadRequest();
