@@ -60,6 +60,10 @@ steps:
    command: publish
    publishWebProjects: false
    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-   zipAfterPublish: True
+   projects: '$(pathtoproject)/*.csproj'
 
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
