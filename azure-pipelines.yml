@@ -30,6 +30,8 @@ steps:
     customCommand: 'run-script build'
   displayName: 'Build NPM'
 
+
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
