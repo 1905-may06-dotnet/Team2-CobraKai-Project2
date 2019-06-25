@@ -1,16 +1,20 @@
-﻿using Microsoft.Azure.Management.Media;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
-using Microsoft.WindowsAzure.Storage.Blob;
-using System;
-using System.Collections.Generic;
-using System.IO;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Project.Client;
 
-namespace Project.Client {
+namespace Prototype.Player.Azure {
 
     public class MediaServicesClient {
 
@@ -26,12 +30,6 @@ namespace Project.Client {
         /// <returns>Generic asynchronous operation that returns type ServiceClientCredentials</returns>
 
         private static async Task < ServiceClientCredentials > ClientCredentials () {
-
-            /// Use ApplicationTokenProvider.LoginSilentWithCertificateAsync or UserTokenProvider.LoginSilentAsync to 
-            /// get a token using service principal with certificate
-
-            /// ClientAssertionCertificate
-            /// ApplicationTokenProvider.LoginSilentWithCertificateAsync
 
             if ( _clientCredential == null )
                 _clientCredential = new ClientCredential ( _configuration.AadClientId, _configuration.AadSecret );
@@ -280,74 +278,74 @@ namespace Project.Client {
 
         public static async Task Download ( string OutputFolder ) {
 
-            var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
-            BlobContinuationToken continueToken = null;
-            Task download                       = null;
+           var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
+           BlobContinuationToken continueToken = null;
+           Task download                       = null;
 
-            if ( ! Directory.Exists ( @OutputFolder ) ) Directory.CreateDirectory ( @OutputFolder );
+           if ( ! Directory.Exists ( @OutputFolder ) ) Directory.CreateDirectory ( @OutputFolder );
 
-            var assetSasContainer = await _client.Assets.ListContainerSasAsync ( 
+           var assetSasContainer = await _client.Assets.ListContainerSasAsync (
 
-                _configuration.ResourceGroup, 
-                _configuration.AccountName, 
-                AssetName, 
-                permissions: AssetContainerPermission.Read,
-                expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime () 
-                
-            );
+               _configuration.ResourceGroup,
+               _configuration.AccountName,
+               AssetName,
+               permissions: AssetContainerPermission.Read,
+               expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime ()
 
-            var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
+           );
 
-            do {
+           var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
 
-                var segments = 
-                    await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
+           do {
 
-                foreach ( var segment in segments.Results ) {
+               var segments =
+                   await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
 
-                    var blobBlock = ( CloudBlockBlob ) segment;
+               foreach ( var segment in segments.Results ) {
 
-                    if ( blobBlock != null )
-                        download = ( blobBlock.DownloadToFileAsync ( Path.Combine ( @OutputFolder, blobBlock.Name ), FileMode.Create ) );
+                   var blobBlock = ( CloudBlockBlob ) segment;
 
-                }
+                   if ( blobBlock != null )
+                       download = ( blobBlock.DownloadToFileAsync ( Path.Combine ( @OutputFolder, blobBlock.Name ), FileMode.Create ) );
 
-                continueToken = segments.ContinuationToken;
+               }
 
-            } while ( continueToken != null );
+               continueToken = segments.ContinuationToken;
 
-            await Task.WhenAny ( download );
+           } while ( continueToken != null );
 
-        }
+           await Task.WhenAny ( download );
+
+       }
 
         /// <summary>
         /// Stream transfer of media file to local storage
         /// </summary>
-        /// <param name="stream">Stream of the song to download</param>
+        /// <param name="local">Whether or not to download a file locally or a stream for transfer</param>
         /// <param name="OutputFolder">Full path including file name (no file extension)</param>
-        /// <returns></returns>
+        /// <returns>Generic task of type 'Stream'</returns>
 
-        public static async Task < Stream > Download ( string OutputFolder, Stream stream ) {
+        public static async Task < Stream > Download ( string OutputFolder, bool local = false ) {
 
             var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
             BlobContinuationToken continueToken = null;
             Task < Stream > download            = null;
 
-            var assetSasContainer = await _client.Assets.ListContainerSasAsync ( 
+            var assetSasContainer = await _client.Assets.ListContainerSasAsync (
 
-                _configuration.ResourceGroup, 
-                _configuration.AccountName, 
-                AssetName, 
+                _configuration.ResourceGroup,
+                _configuration.AccountName,
+                AssetName,
                 permissions: AssetContainerPermission.Read,
-                expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime () 
-                
+                expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime ()
+
             );
 
             var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
 
             do {
 
-                var segments = 
+                var segments =
                     await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
 
                 foreach ( var segment in segments.Results ) {
@@ -355,7 +353,7 @@ namespace Project.Client {
                     var blobBlock = ( CloudBlockBlob ) segment;
 
                     if ( blobBlock != null )
-                        download = ( Task < Stream > ) blobBlock.UploadFromStreamAsync ( stream );
+                         await blobBlock.DownloadToStreamAsync ( download.Result );
 
                 }
 
@@ -369,7 +367,13 @@ namespace Project.Client {
 
         }
 
-        public static async Task < IList < string > > StreamingUri ( string OutputName, string streamingEndpointName ) {
+        /// <summary>
+        /// Returns a list of streaming Uri's
+        /// </summary>
+        /// <param name="OutputName">Name of the song to play</param>
+        /// <returns>A task of type IList < string > </string></returns>
+
+        public static async Task < IList < string > > StreamingUri ( string OutputName ) {
 
             var streamingUrls = new List < string > ();
 
