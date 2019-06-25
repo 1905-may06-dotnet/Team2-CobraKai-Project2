@@ -27,19 +27,14 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(pathtoangular)'
-    customCommand: 'run-script build'
+    customCommand: 'run build -- --prod'
   displayName: 'Build NPM'
-
-- task: Npm@1
-  inputs:
-    command: 'publish'
-    workingDir: '$(pathtoangular)'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    ArtifactName: 'angular'
+    targetPath: '$(pathtoangular)/dist'
+  displayName: 'Publish NPM'
 
 #to add: sonar cloud prepare analysis
 #- task: SonarCloudPrepare@1
