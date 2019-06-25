@@ -12,7 +12,8 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathtosolution: 'Project2Solution'
-  #pathtoproject: 'Project2Solution/Project2Solution/Project.Client'
+  #pathtoproject: 'Project2Solution/Music-Journal'
+  pathtoapi: 'Project2Solution/Project.Client'
 
 steps:
 
@@ -42,23 +43,16 @@ steps:
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
 
-#- task: DotNetCoreCLI@2
-#  inputs:
-#      command: 'publish'
-#publishWebProjects: true
+- task: DotNetCoreCLI@2
+  inputs:
+      command: 'publish'
+      publishWebProjects: true
 
 - task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
-
-#- task: PublishTestResults@2
-#  inputs:
-#    testResultsFormat: 'NUnit'
-#    testResultsFiles: '**/TEST-*.xml'
-#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
-#  displayName: 'Publish Test Results'
 
 - task: PublishTestResults@2
   inputs:
@@ -75,11 +69,11 @@ steps:
 #    WebAppName: '' #to add
 #    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
 
-#- task: DotNetCoreCLI@2
-#  inputs:
-#   command: publish
-#   publishWebProjects: True
-#   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#   zipAfterPublish: True
+- task: DotNetCoreCLI@2
+  inputs:
+   command: publish
+   publishWebProjects: True
+   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+   zipAfterPublish: True
 
-#- task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1
