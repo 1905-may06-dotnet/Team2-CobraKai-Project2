@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using Project.Data;
 
 namespace Project.Test
 {
