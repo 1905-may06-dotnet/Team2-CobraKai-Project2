@@ -42,7 +42,7 @@ namespace Project.Test
             unitTest = a.GetJournalById(jour);
             Assert.AreEqual(unitTest.JournalEntry, "Test 1");
         }
-        
+
         //test GetJournalByTitle(string title)
         [Test]
         public void B_Read_3()

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Lib = Project.Domain;
-using Project.Client.Entities;
-using Project.Client;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Project.Client.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Lib = Project.Domain;
 
 namespace Project.Client.Controllers
 {
@@ -43,7 +39,7 @@ namespace Project.Client.Controllers
             {
                 return NoContent(); //returns 204 status code
             }
-            
+
         }
 
         // GET api/values/5
@@ -83,7 +79,7 @@ namespace Project.Client.Controllers
             {
                 return BadRequest(new { message = "User not found" });
             }
-            
+
         }
 
 

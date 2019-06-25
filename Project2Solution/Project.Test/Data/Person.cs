@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using Project.Data;
 
 namespace Project.Test
 {
@@ -21,7 +18,7 @@ namespace Project.Test
             a.CreatePerson(unitTest);
             Assert.Pass();
         }
-        
+
         //test GetPersons()
         [Test]
         public void B_Read_1()

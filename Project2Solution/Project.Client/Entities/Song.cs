@@ -1,9 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Project.Client.Entities
+﻿namespace Project.Client.Entities
 {
     public class Song
     {

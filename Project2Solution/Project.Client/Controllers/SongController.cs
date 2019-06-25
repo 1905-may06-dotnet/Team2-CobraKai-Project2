@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Lib = Project.Domain;
-using Project.Client.Entities;
-using Project.Client;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
-using System.Net.Http;
-using System.Net;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.Net.Http.Headers;
-using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Project.Client.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Lib = Project.Domain;
 
 namespace Project.Client.Controllers
 {

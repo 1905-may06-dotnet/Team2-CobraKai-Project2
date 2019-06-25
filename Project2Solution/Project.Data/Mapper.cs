@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Project.Data.Entities;
 using System.Collections.Generic;
-using System.Text;
-using Project.Data.Entities;
 using System.Linq;
 
 namespace Project.Data
@@ -100,6 +98,6 @@ namespace Project.Data
 
         public static IEnumerable<Domain.Song> Map(IEnumerable<Song> songs) => songs.Select(Map);
         public static IEnumerable<Song> Map(IEnumerable<Domain.Song> songs) => songs.Select(Map);
-        
+
     }
 }
