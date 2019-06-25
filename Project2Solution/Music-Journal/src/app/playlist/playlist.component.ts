@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 
 export class PlaylistComponent implements OnInit, AfterViewInit {
 
-  show : string = "";
+  show : boolean = false;
 
   ngAfterViewInit(): void {
 
