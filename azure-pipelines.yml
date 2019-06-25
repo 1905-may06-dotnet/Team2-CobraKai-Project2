@@ -12,26 +12,46 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathtosolution: 'Project2Solution'
-  #pathtoproject: 'Project2Solution/Music-Journal'
+  pathtoangular: 'Project2Solution/Music-Journal'
   pathtoapi: 'Project2Solution/Project.Client'
 
 steps:
+- task: UseNode@1
+  displayName: Ensure Node installed
+  inputs:
+    version: '10.x'
+
+- script: npm ci
+  displayName: Install NPM deps
+
+- script: npm run build:ci
+  displayName: Angular build production
+
+- script: npm run lint
+  displayName: Angular lint
+
+- script: npm run test:ci
+  displayName: Angular test
+
+- script: npm run e2e:ci
+  displayName: Angular end-to-end test
+
 
 #to add: sonar cloud prepare analysis
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'Project2Sonar'
-    organization: 'danielcoombs005-github'
-    scannerMode: 'MSBuild'
-    projectKey: '559846baffd6aa29690f5d036d93e4eafdf4c166'
-    extraProperties: |
-      sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
-      sonar.cs.vstest.reportsPaths="$(Build.ArtifactStagingDirectory)/test/*.trx"
-  displayName: 'Sonar Prepare Analysis'
+#- task: SonarCloudPrepare@1
+#  inputs:
+#    SonarCloud: 'Project2Sonar'
+#    organization: 'danielcoombs005-github'
+#    scannerMode: 'MSBuild'
+#    projectKey: '559846baffd6aa29690f5d036d93e4eafdf4c166'
+#    extraProperties: |
+#      sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
+#      sonar.cs.vstest.reportsPaths="$(Build.ArtifactStagingDirectory)/test/*.trx"
+#  displayName: 'Sonar Prepare Analysis'
 
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
-  workingDirectory: $(pathtosolution)
+#- script: dotnet build --configuration $(buildConfiguration)
+#  displayName: 'dotnet build $(buildConfiguration)'
+#  workingDirectory: $(pathtosolution)
 
 #- script: dotnet test 
 #    --configuration $(buildConfiguration)
@@ -43,23 +63,23 @@ steps:
 #  workingDirectory: $(pathtosolution)
 #  displayName: 'dotnet test'
 
-- task: DotNetCoreCLI@2
-  inputs:
-      command: 'publish'
-      publishWebProjects: true
+#- task: DotNetCoreCLI@2
+#  inputs:
+#      command: 'publish'
+#      publishWebProjects: true
 
-- task: SonarCloudAnalyze@1
+#- task: SonarCloudAnalyze@1
 
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
+#- task: SonarCloudPublish@1
+#  inputs:
+#    pollingTimeoutSec: '300'
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'VSTest'
-    testResultsFiles: '*.trx'
-    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
-  displayName: 'Publish Test Results '
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'VSTest'
+#    testResultsFiles: '*.trx'
+#    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
+#  displayName: 'Publish Test Results '
 
 #- task: AzureRmWebAppDeployment@4
 #  inputs:
@@ -69,11 +89,11 @@ steps:
 #    WebAppName: '' #to add
 #    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
 
-- task: DotNetCoreCLI@2
-  inputs:
-   command: publish
-   publishWebProjects: True
-   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-   zipAfterPublish: True
+#- task: DotNetCoreCLI@2
+#  inputs:
+#   command: publish
+#   publishWebProjects: True
+#   arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#   zipAfterPublish: True
 
-- task: PublishBuildArtifacts@1
+#- task: PublishBuildArtifacts@1
