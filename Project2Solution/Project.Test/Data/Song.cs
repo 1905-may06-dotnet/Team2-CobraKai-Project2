@@ -1,8 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Project.Data;
 
 namespace Project.Test
 {
@@ -77,7 +73,8 @@ namespace Project.Test
         {
             Project.Data.Repository repo = new Project.Data.Repository(db);
             int songid = 0;
-            foreach (var i in repo.GetSongs()) {
+            foreach (var i in repo.GetSongs())
+            {
                 songid = i.Id;
             }
             Project.Domain.Song songTest = new Project.Domain.Song()
@@ -93,7 +90,7 @@ namespace Project.Test
                 FilePath = "audio/file"
             };
 
-            
+
             repo.UpdateSong(songTest);
 
             Assert.Pass();

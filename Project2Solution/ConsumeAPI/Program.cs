@@ -1,8 +1,7 @@
-﻿using System;
-using System.Net.Http;
-using Project.Client.Entities;
-
+﻿using Project.Client.Entities;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace ConsumeApi
 {

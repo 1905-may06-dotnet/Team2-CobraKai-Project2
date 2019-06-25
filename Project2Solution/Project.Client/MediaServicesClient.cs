@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-using System.Text;
-using Microsoft.Azure.Management.Media;
+﻿using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
-using Microsoft.Extensions.Configuration;
-using System.Runtime.CompilerServices;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
-namespace Project.Client {
+namespace Project.Client
+{
 
-    public class MediaServicesClient {
+    public class MediaServicesClient
+    {
 
         private static Configuration _configuration;
         private static ClientCredential _clientCredential;
@@ -28,14 +27,15 @@ namespace Project.Client {
         /// </summary>
         /// <returns>Generic asynchronous operation that returns type ServiceClientCredentials</returns>
 
-        private static async Task < ServiceClientCredentials > ClientCredentials () {
+        private static async Task<ServiceClientCredentials> ClientCredentials()
+        {
 
-            if ( _clientCredential == null )
-                _clientCredential = new ClientCredential ( _configuration.AadClientId, _configuration.AadSecret );
+            if (_clientCredential == null)
+                _clientCredential = new ClientCredential(_configuration.AadClientId, _configuration.AadSecret);
 
             return await
                 ApplicationTokenProvider
-                    .LoginSilentAsync( _configuration.AadTenantId, _clientCredential, ActiveDirectoryServiceSettings.Azure );
+                    .LoginSilentAsync(_configuration.AadTenantId, _clientCredential, ActiveDirectoryServiceSettings.Azure);
 
         }
 
@@ -44,25 +44,28 @@ namespace Project.Client {
         /// </summary>
         /// <returns>Generic asynchronous operation that returns type IAzureMediaServicesClient</returns>
 
-        private static async Task < IAzureMediaServicesClient > ClientService () {
+        private static async Task<IAzureMediaServicesClient> ClientService()
+        {
 
-            if ( _configuration == null ) {
+            if (_configuration == null)
+            {
 
-                _configuration = new Configuration (
+                _configuration = new Configuration(
 
-                    new ConfigurationBuilder ()
-                        .SetBasePath ( Directory.GetCurrentDirectory () )
-                        .AddJsonFile ( "appsettings.json", optional: true, reloadOnChange: true )
-                        .AddEnvironmentVariables ()
-                        .Build ()
+                    new ConfigurationBuilder()
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                        .AddEnvironmentVariables()
+                        .Build()
 
                 );
 
             }
 
-            _serviceClientCredentials = await ClientCredentials ();
+            _serviceClientCredentials = await ClientCredentials();
 
-            return new AzureMediaServicesClient ( _configuration.ArmEndpoint, _serviceClientCredentials ) {
+            return new AzureMediaServicesClient(_configuration.ArmEndpoint, _serviceClientCredentials)
+            {
 
                 SubscriptionId = _configuration.SubscriptionId
 
@@ -75,17 +78,19 @@ namespace Project.Client {
         /// </summary>
         /// <returns>Generic asynchronous operation that returns type IAzureMediaServicesClient</returns>
 
-        public static async Task < IAzureMediaServicesClient > Connect ( string TransformName = "transformName") {
+        public static async Task<IAzureMediaServicesClient> Connect(string TransformName = "transformName")
+        {
 
-            _client = await ClientService ();
+            _client = await ClientService();
 
-            _encoding = await _client.Transforms.GetAsync ( _configuration.ResourceGroup, _configuration.AccountName, TransformName );
+            _encoding = await _client.Transforms.GetAsync(_configuration.ResourceGroup, _configuration.AccountName, TransformName);
 
             _client.LongRunningOperationRetryTimeout = 2;
 
-            if ( _encoding == null ) {
+            if (_encoding == null)
+            {
 
-                TransformOutput [] output = new TransformOutput [] {
+                TransformOutput[] output = new TransformOutput[] {
 
                     new TransformOutput {
 
@@ -99,7 +104,7 @@ namespace Project.Client {
 
                 };
 
-                _encoding = await _client.Transforms.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, TransformName, output );
+                _encoding = await _client.Transforms.CreateOrUpdateAsync(_configuration.ResourceGroup, _configuration.AccountName, TransformName, output);
 
             }
 
@@ -114,48 +119,51 @@ namespace Project.Client {
         /// <param name="TransformName">Name of the transformation object (optional)</param>
         /// <returns>Generic asynchronous operation that returns type Asset</returns>
 
-        public static async Task < Asset > Upload ( string @FileToUpload, string TransformName = "transformName") {
+        public static async Task<Asset> Upload(string @FileToUpload, string TransformName = "transformName")
+        {
 
-            var AssetName = Path.GetFileName ( FileToUpload ).Split ( '.' ) [ 0 ];
-            var asset     = await _client.Assets.GetAsync ( _configuration.ResourceGroup, _configuration.AccountName, AssetName );
+            var AssetName = Path.GetFileName(FileToUpload).Split('.')[0];
+            var asset = await _client.Assets.GetAsync(_configuration.ResourceGroup, _configuration.AccountName, AssetName);
 
-            if ( asset == null ) { 
+            if (asset == null)
+            {
 
-                var output    = await _client.Assets.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName, new Asset () );
+                var output = await _client.Assets.CreateOrUpdateAsync(_configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName, new Asset());
 
-                asset = await _client.Assets.CreateOrUpdateAsync (
+                asset = await _client.Assets.CreateOrUpdateAsync(
 
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     AssetName,
-                    new Asset ()
+                    new Asset()
 
                 );
 
-                var response = await _client.Assets.ListContainerSasAsync (
+                var response = await _client.Assets.ListContainerSasAsync(
 
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     AssetName,
                     permissions: AssetContainerPermission.ReadWrite,
-                    expiryTime: DateTime.Now.AddHours ( 4 ).ToUniversalTime ()
+                    expiryTime: DateTime.Now.AddHours(4).ToUniversalTime()
 
                 );
 
-                var container = new CloudBlobContainer ( new Uri ( response.AssetContainerSasUrls [ 0 ] ) );
+                var container = new CloudBlobContainer(new Uri(response.AssetContainerSasUrls[0]));
 
-                await container.GetBlockBlobReference ( Path.GetFileName ( FileToUpload ) ).UploadFromFileAsync ( FileToUpload );
+                await container.GetBlockBlobReference(Path.GetFileName(FileToUpload)).UploadFromFileAsync(FileToUpload);
 
-                Job job = await _client.Jobs.CreateAsync (
+                Job job = await _client.Jobs.CreateAsync(
 
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     TransformName,
                     "Job-" + AssetName,
-                    new Job {
+                    new Job
+                    {
 
-                        Input   = new JobInputAsset ( assetName: AssetName ),
-                        Outputs = new JobOutput [] { new JobOutputAsset ( output.Name ) },
+                        Input = new JobInputAsset(assetName: AssetName),
+                        Outputs = new JobOutput[] { new JobOutputAsset(output.Name) },
 
                     }
 
@@ -175,48 +183,51 @@ namespace Project.Client {
         /// <param name="TransformName">Name of the transformation object (optional)</param>
         /// <returns>Generic asynchronous operation that returns type Asset</returns>
 
-        public static async Task < Asset > Upload ( Stream stream, string @FileToUpload, string TransformName = "transformName") {
+        public static async Task<Asset> Upload(Stream stream, string @FileToUpload, string TransformName = "transformName")
+        {
 
-            var AssetName = Path.GetFileName ( FileToUpload ).Split ( '.' ) [ 0 ];
-            var asset     = await _client.Assets.GetAsync ( _configuration.ResourceGroup, _configuration.AccountName, AssetName );
+            var AssetName = Path.GetFileName(FileToUpload).Split('.')[0];
+            var asset = await _client.Assets.GetAsync(_configuration.ResourceGroup, _configuration.AccountName, AssetName);
 
-            if ( asset == null ) { 
+            if (asset == null)
+            {
 
-                var output    = await _client.Assets.CreateOrUpdateAsync ( _configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName, new Asset () );
+                var output = await _client.Assets.CreateOrUpdateAsync(_configuration.ResourceGroup, _configuration.AccountName, "Output-" + AssetName, new Asset());
 
-                asset = await _client.Assets.CreateOrUpdateAsync (
+                asset = await _client.Assets.CreateOrUpdateAsync(
 
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     AssetName,
-                    new Asset ()
+                    new Asset()
 
                 );
 
-                var response = await _client.Assets.ListContainerSasAsync (
+                var response = await _client.Assets.ListContainerSasAsync(
 
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     AssetName,
                     permissions: AssetContainerPermission.ReadWrite,
-                    expiryTime: DateTime.Now.AddHours ( 4 ).ToUniversalTime ()
+                    expiryTime: DateTime.Now.AddHours(4).ToUniversalTime()
 
                 );
 
-                var container = new CloudBlobContainer ( new Uri ( response.AssetContainerSasUrls [ 0 ] ) );
+                var container = new CloudBlobContainer(new Uri(response.AssetContainerSasUrls[0]));
 
-                await container.GetBlockBlobReference ( Path.GetFileName ( FileToUpload ) ).UploadFromStreamAsync ( stream );
+                await container.GetBlockBlobReference(Path.GetFileName(FileToUpload)).UploadFromStreamAsync(stream);
 
-                Job job = await _client.Jobs.CreateAsync (
+                Job job = await _client.Jobs.CreateAsync(
 
                     _configuration.ResourceGroup,
                     _configuration.AccountName,
                     TransformName,
                     "Job-" + AssetName,
-                    new Job {
+                    new Job
+                    {
 
-                        Input   = new JobInputAsset ( assetName: AssetName ),
-                        Outputs = new JobOutput [] { new JobOutputAsset ( output.Name ) },
+                        Input = new JobInputAsset(assetName: AssetName),
+                        Outputs = new JobOutput[] { new JobOutputAsset(output.Name) },
 
                     }
 
@@ -234,45 +245,48 @@ namespace Project.Client {
         /// <param name="OutputFolder">Full path including file name (no file extension)</param>
         /// <returns>Download Task</returns>
 
-        public static async Task Download ( string OutputFolder ) {
+        public static async Task Download(string OutputFolder)
+        {
 
-            var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
+            var AssetName = Path.GetFileName(OutputFolder).Split('.')[0];
             BlobContinuationToken continueToken = null;
-            Task download                       = null;
+            Task download = null;
 
-            if ( ! Directory.Exists ( @OutputFolder ) ) Directory.CreateDirectory ( @OutputFolder );
+            if (!Directory.Exists(@OutputFolder)) Directory.CreateDirectory(@OutputFolder);
 
-            var assetSasContainer = await _client.Assets.ListContainerSasAsync ( 
+            var assetSasContainer = await _client.Assets.ListContainerSasAsync(
 
-                _configuration.ResourceGroup, 
-                _configuration.AccountName, 
-                AssetName, 
+                _configuration.ResourceGroup,
+                _configuration.AccountName,
+                AssetName,
                 permissions: AssetContainerPermission.Read,
-                expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime () 
-                
+                expiryTime: DateTime.UtcNow.AddHours(1).ToUniversalTime()
+
             );
 
-            var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
+            var BlobContainer = new CloudBlobContainer(new Uri(assetSasContainer.AssetContainerSasUrls[0]));
 
-            do {
+            do
+            {
 
-                var segments = 
-                    await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
+                var segments =
+                    await BlobContainer.ListBlobsSegmentedAsync(null, true, BlobListingDetails.None, 1, continueToken, null, null);
 
-                foreach ( var segment in segments.Results ) {
+                foreach (var segment in segments.Results)
+                {
 
-                    var blobBlock = ( CloudBlockBlob ) segment;
+                    var blobBlock = (CloudBlockBlob)segment;
 
-                    if ( blobBlock != null )
-                        download = ( blobBlock.DownloadToFileAsync ( Path.Combine ( @OutputFolder, blobBlock.Name ), FileMode.Create ) );
+                    if (blobBlock != null)
+                        download = (blobBlock.DownloadToFileAsync(Path.Combine(@OutputFolder, blobBlock.Name), FileMode.Create));
 
                 }
 
                 continueToken = segments.ContinuationToken;
 
-            } while ( continueToken != null );
+            } while (continueToken != null);
 
-            await Task.WhenAny ( download );
+            await Task.WhenAny(download);
 
         }
 
@@ -283,94 +297,100 @@ namespace Project.Client {
         /// <param name="OutputFolder">Full path including file name (no file extension)</param>
         /// <returns></returns>
 
-        public static async Task < Stream > Download ( string OutputFolder, Stream stream ) {
+        public static async Task<Stream> Download(string OutputFolder, Stream stream)
+        {
 
-            var AssetName                       = Path.GetFileName ( OutputFolder ).Split ( '.' ) [ 0 ];
+            var AssetName = Path.GetFileName(OutputFolder).Split('.')[0];
             BlobContinuationToken continueToken = null;
-            Task < Stream > download            = null;
+            Task<Stream> download = null;
 
-            var assetSasContainer = await _client.Assets.ListContainerSasAsync ( 
+            var assetSasContainer = await _client.Assets.ListContainerSasAsync(
 
-                _configuration.ResourceGroup, 
-                _configuration.AccountName, 
-                AssetName, 
+                _configuration.ResourceGroup,
+                _configuration.AccountName,
+                AssetName,
                 permissions: AssetContainerPermission.Read,
-                expiryTime: DateTime.UtcNow.AddHours ( 1 ).ToUniversalTime () 
-                
+                expiryTime: DateTime.UtcNow.AddHours(1).ToUniversalTime()
+
             );
 
-            var BlobContainer = new CloudBlobContainer ( new Uri ( assetSasContainer.AssetContainerSasUrls [ 0 ] ) );
+            var BlobContainer = new CloudBlobContainer(new Uri(assetSasContainer.AssetContainerSasUrls[0]));
 
-            do {
+            do
+            {
 
-                var segments = 
-                    await BlobContainer.ListBlobsSegmentedAsync ( null, true, BlobListingDetails.None, 1, continueToken, null, null );
+                var segments =
+                    await BlobContainer.ListBlobsSegmentedAsync(null, true, BlobListingDetails.None, 1, continueToken, null, null);
 
-                foreach ( var segment in segments.Results ) {
+                foreach (var segment in segments.Results)
+                {
 
-                    var blobBlock = ( CloudBlockBlob ) segment;
+                    var blobBlock = (CloudBlockBlob)segment;
 
-                    if ( blobBlock != null )
-                        download = ( Task < Stream > ) blobBlock.UploadFromStreamAsync ( stream );
+                    if (blobBlock != null)
+                        download = (Task<Stream>)blobBlock.UploadFromStreamAsync(stream);
 
                 }
 
                 continueToken = segments.ContinuationToken;
 
-            } while ( continueToken != null );
+            } while (continueToken != null);
 
-            await Task.WhenAny ( download );
+            await Task.WhenAny(download);
 
             return download.Result;
 
         }
 
-        public static async Task < IList < string > > Stream ( string assetName, string streamingEndpointName ) {
+        public static async Task<IList<string>> Stream(string assetName, string streamingEndpointName)
+        {
 
-            var streamingUrls = new List < string > ();
+            var streamingUrls = new List<string>();
 
-            var locator = await _client.StreamingLocators.CreateAsync (
-            
+            var locator = await _client.StreamingLocators.CreateAsync(
+
                 _configuration.ResourceGroup,
                 _configuration.AccountName,
                 "locator-" + assetName,
-                new StreamingLocator {
+                new StreamingLocator
+                {
 
-                    AssetName           = assetName,
+                    AssetName = assetName,
                     StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
 
                 }
-                
+
             );
 
-            var streamingEndpoint = await _client.StreamingEndpoints.GetAsync (
-            
+            var streamingEndpoint = await _client.StreamingEndpoints.GetAsync(
+
                 _configuration.ResourceGroup,
                 _configuration.AccountName,
                 streamingEndpointName
-                
+
             );
 
-            var paths = await _client.StreamingLocators.ListPathsAsync (
-            
+            var paths = await _client.StreamingLocators.ListPathsAsync(
+
                 _configuration.ResourceGroup,
                 _configuration.AccountName,
                 "locator-" + assetName
-                
+
             );
 
-            foreach ( var path in paths.StreamingPaths )
+            foreach (var path in paths.StreamingPaths)
 
-                streamingUrls.Add (
-                
-                    new UriBuilder {
+                streamingUrls.Add(
+
+                    new UriBuilder
+                    {
 
                         Scheme = "https",
                         Host = streamingEndpoint.HostName,
-                        Path = path.Paths [ 0 ]
+                        Path = path.Paths[0]
 
-                    }.ToString ()
-                    
+                    }.ToString()
+
                 );
 
 
@@ -378,7 +398,7 @@ namespace Project.Client {
 
         }
 
-        public static Task < IAzureMediaServicesClient > Client { get { return ( Task < IAzureMediaServicesClient >)_client; } }
+        public static Task<IAzureMediaServicesClient> Client { get { return (Task<IAzureMediaServicesClient>)_client; } }
 
         public static Configuration Configuration { get { return _configuration; } }
 
