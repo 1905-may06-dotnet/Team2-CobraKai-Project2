@@ -9,6 +9,11 @@ import { HttpClientModule }    from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SongComponent } from './song/song.component';
+import { RegisterComponent } from './register/register.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { SignoutComponent } from './signout/signout.component';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -17,16 +22,27 @@ import { SongComponent } from './song/song.component';
     LoginComponent,
     HomeComponent,
     PlaylistComponent,
-    SongComponent
+    SongComponent,
+    RegisterComponent,
+    AboutusComponent,
+    SignoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, 
+    ReactiveFormsModule,
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA9dF1JYHmhLtQtf2WsHOIW32tJSPrvOxw'
+    })
   ],
-  providers: [],
+  providers: [
+    AppComponent,
+    RegisterComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
