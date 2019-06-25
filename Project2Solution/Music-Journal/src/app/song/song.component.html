@@ -1,0 +1,46 @@
+<div class="modal" id="myModal">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Add Song</h2>
+      </div>
+
+      <div class = "modal-body">
+        <div class= "container">
+            <form #userForm="ngForm" >
+                <label for="title"><b>Title</b></label>
+                <input [(ngModel)]="song.Title" type="text" placeholder="Enter Song Title"  name="title" required>
+
+                <label for="artist"><b>Artist</b></label>
+                <input  [(ngModel)]="song.Artist" type="text" placeholder="Enter Song Artist" name="artist" required>
+
+                <label for="genre"><b>Genre</b></label>
+                <input  [(ngModel)]="song.Genre" type="text" placeholder="Enter Song Genre" name="genre" required>
+
+                <label for="size"><b>Size</b></label>
+                <input  [(ngModel)]="song.Size" type="text" placeholder="Enter Song Size" name="size" required>
+
+                <label for="length"><b>Length</b></label>
+                <input  [(ngModel)]="song.Length" type="text" placeholder="Enter Song Length" name="length" required>
+
+                <label for="releasedDate"><b>ReleasedDate</b></label>
+                <input  [(ngModel)]="song.ReleaseDate" type="text" placeholder="Enter Song Released Date" name="releasedDate" required>
+
+                <label for="filepath"><b>File Path</b></label>
+                <input type="file" placeholder="Enter Song Artist" name="filepath" required (change)="onFileChange($event)">
+
+                <button type="submit" (click) ="onAddSong()">Add Song</button>
+            </form>
+        </div>
+
+
+     </div>
+
+      <div class="modal-footer">
+      </div>
+
+    </div>
+  </div>
+
