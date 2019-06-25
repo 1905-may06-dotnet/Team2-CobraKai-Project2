@@ -72,3 +72,4 @@ namespace Project.Client
             app.UseMvc();
         }
     }
+}
