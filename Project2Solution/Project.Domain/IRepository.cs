@@ -13,7 +13,7 @@ namespace Project.Domain
 
         IEnumerable<Song> GetSongs();
         Song GetSongById(int id);
-        Song GetSongByTitle(string title);
+        Song GetSongByTitle(string title, string artist);
         int CreateSong(Song song); //return 1 if successful
         int UpdateSong(Song song);
         int DeleteSong(int id);

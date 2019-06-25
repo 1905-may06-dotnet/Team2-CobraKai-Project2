@@ -22,7 +22,7 @@
           <div class="list">
 
           </div>
-          <p> + Add New Song </p>
+          <p (click)="show = !show">{{show ? 'hide' : 'show'}} + Add New Song </p>
         </div>
       </div>
   </div>
@@ -30,3 +30,7 @@
 </div>
 
 </div>
+
+<app-song *ngIf = 'show'></app-song>
+
+
