@@ -22,6 +22,7 @@ namespace Project.Client
             Configuration = configuration;
         }
 
+<<<<<<< HEAD
         // This method gets called by the runtime. Use this method to add services to the container.
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -65,11 +66,57 @@ namespace Project.Client
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+=======
+		    // This method gets called by the runtime. Use this method to add services to the container.
+		    readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-            app.UseCors(MyAllowSpecificOrigins);
+		    public IConfiguration Configuration { get; }
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
+		// This method gets called by the runtime. Use this method to add services to the container.
+		    public void ConfigureServices(IServiceCollection services)
+		    {
+
+			    services.AddCors(options =>
+			    {
+				    options.AddPolicy(MyAllowSpecificOrigins,
+				    	builder => builder.AllowAnyOrigin()
+				    	.AllowAnyMethod()
+					    .AllowAnyHeader()
+					    .AllowAnyOrigin()
+					    .WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header")
+					    .WithExposedHeaders("Content-Disposition", "Content-Length"));
+
+		    	});
+
+
+			    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+			    services.AddDbContext<Project.Data.Entities.CobraKaiDbContext>(optionsAction =>
+			    optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+			    services.AddScoped<Project.Domain.IRepository, Project.Data.Repository>();
+		    }
+
+		    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+              {
+                  if (env.IsDevelopment())
+                   {
+                      app.UseDeveloperExceptionPage();
+                      //app.UseMaintainCorsHeaders();
+                    }
+                    else
+                    {
+                        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                       app.UseHsts();
+                    }
+>>>>>>> 82d36f431c45414f3ee1dca9dc7cc009e54c3158
+
+                app.UseCors(MyAllowSpecificOrigins);
+
+                app.UseHttpsRedirection();
+                app.UseMvc();
+              }
         }
     }
 }
