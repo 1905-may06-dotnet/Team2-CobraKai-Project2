@@ -60,14 +60,6 @@ steps:
     searchFolder: '$(Build.ArtifactStagingDirectory)/test'
   displayName: 'Publish Test Results '
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'connectiondc'
-    appType: 'webApp'
-    WebAppName: '' #to add
-    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
-
 - task: DotNetCoreCLI@2
   inputs:
    command: publish
