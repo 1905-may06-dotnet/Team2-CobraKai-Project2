@@ -18,7 +18,7 @@ const httpOptions = {
 
 export class LoginService {
 
-  private basePath: string = "https://localhost:5001/api/";
+  private basePath: string = "http://musicjournalapi.azurewebsites.net/api/";
   private personDocument: string ="person";
   private personDocumentPath : string = this.basePath + this.personDocument;
 

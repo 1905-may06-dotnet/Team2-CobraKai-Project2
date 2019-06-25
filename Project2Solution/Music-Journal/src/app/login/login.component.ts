@@ -40,11 +40,13 @@ export class LoginComponent implements OnInit {
       this.isUserLoggedIn == true;
 
       this.router.navigateByUrl('/Home');
-
+      
+      alert('Welcome back, '+this.person.username+'!');
 
     }else {
+      alert('Incorrect username or password.');
     }
-
+    
     });
 
    }

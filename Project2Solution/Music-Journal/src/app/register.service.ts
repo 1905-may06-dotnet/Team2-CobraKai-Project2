@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Person } from './models/person';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -40,6 +42,11 @@ EnsureNewUsername(personAuth: Person, response: any) : boolean {
     }
 
     return usertaken;
+}
+
+AddUser(person: Person) : Observable<Person> {
+  return this.http.post<Person>(this.personDocumentPath, person, httpOptions)
+    .pipe();
 }
 
 GetUsers() {
