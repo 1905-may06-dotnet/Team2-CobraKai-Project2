@@ -1,0 +1,13 @@
+h1 {
+   color:white;
+   font-size: 200%;
+}
+  
+p {
+   color:whitesmoke;
+ }
+
+ agm-map {
+    height: 500px;
+    width: 500px;
+  }

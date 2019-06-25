@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Linq;
 using Lib = Project.Domain;
 
@@ -65,6 +67,8 @@ namespace Project.Client
             SongId = pl.SongId,
             Title = pl.Title
         };
+
+
 
         public static IEnumerable<Lib.Person> Map(IEnumerable<Project.Client.Entities.Person> persons) => persons.Select(Map);
         public static IEnumerable<Project.Client.Entities.Person> Map(IEnumerable<Lib.Person> persons) => persons.Select(Map);

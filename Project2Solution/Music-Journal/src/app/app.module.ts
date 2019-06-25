@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SongComponent } from './song/song.component';
 import { RegisterComponent } from './register/register.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { SignoutComponent } from './signout/signout.component';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -19,13 +23,19 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     PlaylistComponent,
     SongComponent,
-    RegisterComponent
+    RegisterComponent,
+    AboutusComponent,
+    SignoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA9dF1JYHmhLtQtf2WsHOIW32tJSPrvOxw'
+    })
   ],
   providers: [
     AppComponent,
