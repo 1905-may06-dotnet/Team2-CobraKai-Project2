@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickBack() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/Login');
   }
 
   ngOnInit() {
