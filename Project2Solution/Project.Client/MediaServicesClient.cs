@@ -30,6 +30,12 @@ namespace Project.Client {
 
         private static async Task < ServiceClientCredentials > ClientCredentials () {
 
+            /// Use ApplicationTokenProvider.LoginSilentWithCertificateAsync or UserTokenProvider.LoginSilentAsync to 
+            /// get a token using service principal with certificate
+
+            /// ClientAssertionCertificate
+            /// ApplicationTokenProvider.LoginSilentWithCertificateAsync
+
             if ( _clientCredential == null )
                 _clientCredential = new ClientCredential ( _configuration.AadClientId, _configuration.AadSecret );
 
@@ -46,27 +52,49 @@ namespace Project.Client {
 
         private static async Task < IAzureMediaServicesClient > ClientService () {
 
-            if ( _configuration == null ) {
+            try {
 
-                _configuration = new Configuration (
+                if ( _configuration == null ) {
 
-                    new ConfigurationBuilder ()
-                        .SetBasePath ( Directory.GetCurrentDirectory () )
-                        .AddJsonFile ( "appsettings.json", optional: true, reloadOnChange: true )
-                        .AddEnvironmentVariables ()
-                        .Build ()
+                    _configuration = new Configuration (
 
-                );
+                        new ConfigurationBuilder ()
+                            .SetBasePath ( Directory.GetCurrentDirectory () )
+                            .AddJsonFile ( "appsettings.json", optional: true, reloadOnChange: true )
+                            .AddEnvironmentVariables ()
+                            .Build ()
+
+                    );
+
+                }
+
+                _serviceClientCredentials = await ClientCredentials ();
+
+                return new AzureMediaServicesClient ( _configuration.ArmEndpoint, _serviceClientCredentials ) {
+
+                    SubscriptionId = _configuration.SubscriptionId
+
+                };
+
+            } catch ( Exception exception ) {
+
+                if ( exception.Source.Contains ( "ActiveDirectory" ) )
+                    Console.Error.WriteLine ( "TIP: Make sure that you have filled out the appsettings.json file before running this sample." );
+                else if ( exception.Source.Contains ( "Forbidden" ) )
+                    Console.Error.WriteLine ( "TIP: Make sure the resource identified in the appsettings.json file has not been deleted or configured with CORS which would require the enclusion of special headers" );
+
+                Console.Error.WriteLine ( $"{ exception.Message }" );
+
+                ApiErrorException apiException = exception.GetBaseException() as ApiErrorException;
+
+                if ( apiException != null )
+                    Console.Error.WriteLine (
+                        $"ERROR: API call failed with error code '{ apiException.Body.Error.Code }' and message '{ apiException.Body.Error.Message }'."
+                    );
+
+                return null;
 
             }
-
-            _serviceClientCredentials = await ClientCredentials ();
-
-            return new AzureMediaServicesClient ( _configuration.ArmEndpoint, _serviceClientCredentials ) {
-
-                SubscriptionId = _configuration.SubscriptionId
-
-            };
 
         }
 
@@ -104,6 +132,25 @@ namespace Project.Client {
             }
 
             return _client;
+
+        }
+
+        /// <summary>
+        /// Removes all active jobs and assets from the media service
+        /// </summary>
+
+        public static async Task ResetMediaService () {
+
+            var token = new System.Threading.CancellationToken ();
+
+            var jobs   = await _client.Jobs.ListAsync ( _configuration.ResourceGroup, _configuration.AccountName, _encoding.Name, null, token );
+            var assets = await _client.Assets.ListAsync ( _configuration.ResourceGroup, _configuration.AccountName );
+
+            foreach ( var job in jobs )
+                await _client.Jobs.DeleteAsync ( _configuration.ResourceGroup, _configuration.AccountName, _encoding.Name, job.Name );
+
+            foreach ( var asset in assets )
+                await _client.Assets.DeleteAsync ( _configuration.ResourceGroup, _configuration.AccountName, asset.Name );
 
         }
 
@@ -325,54 +372,72 @@ namespace Project.Client {
 
         }
 
-        public static async Task < IList < string > > Stream ( string assetName, string streamingEndpointName ) {
+        public static async Task < IList < string > > StreamingUri ( string OutputName, string streamingEndpointName ) {
 
             var streamingUrls = new List < string > ();
 
-            var locator = await _client.StreamingLocators.CreateAsync (
+            var uriBuilder    = new UriBuilder ();
+
+            var locator = await _client.StreamingLocators.GetAsync (
             
                 _configuration.ResourceGroup,
                 _configuration.AccountName,
-                "locator-" + assetName,
-                new StreamingLocator {
+                "Locator-" + ( OutputName.Contains ( "." ) ? OutputName.Split ( "." ) [ 0 ] : OutputName )
 
-                    AssetName           = assetName,
-                    StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
-
-                }
-                
             );
 
-            var streamingEndpoint = await _client.StreamingEndpoints.GetAsync (
+            if ( locator == null ) {
+
+                locator = await _client.StreamingLocators.CreateAsync (
             
-                _configuration.ResourceGroup,
-                _configuration.AccountName,
-                streamingEndpointName
-                
-            );
+                    _configuration.ResourceGroup,
+                    _configuration.AccountName,
+                    "Locator-" + ( OutputName.Contains ( "." ) ? OutputName.Split ( "." ) [ 0 ] : OutputName ),
 
-            var paths = await _client.StreamingLocators.ListPathsAsync (
-            
-                _configuration.ResourceGroup,
-                _configuration.AccountName,
-                "locator-" + assetName
-                
-            );
+                    new StreamingLocator {
 
-            foreach ( var path in paths.StreamingPaths )
+                        AssetName = "Output-" + ( OutputName.Contains ( "." ) ? OutputName.Split ( "." ) [ 0 ] : OutputName ),
+                        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
 
-                streamingUrls.Add (
-                
-                    new UriBuilder {
+                    }
 
-                        Scheme = "https",
-                        Host = streamingEndpoint.HostName,
-                        Path = path.Paths [ 0 ]
-
-                    }.ToString ()
-                    
                 );
 
+            }
+
+            var streamingEndpoint = await _client.StreamingEndpoints.GetAsync ( 
+                
+                _configuration.ResourceGroup, _configuration.AccountName, "default"
+
+            );
+
+            if ( streamingEndpoint != null )
+
+                if ( streamingEndpoint.ResourceState != StreamingEndpointResourceState.Running )
+
+                    await _client.StreamingEndpoints.StartAsync (
+
+                        _configuration.ResourceGroup, _configuration.AccountName, "default"
+
+                    );
+
+            ListPathsResponse paths = await _client.StreamingLocators.ListPathsAsync (  
+            
+                _configuration.ResourceGroup,
+                _configuration.AccountName,
+                locator.Name
+                
+            );
+
+            uriBuilder.Scheme = "https";
+            uriBuilder.Host   = streamingEndpoint.HostName;
+
+            foreach ( var path in paths.StreamingPaths ) {
+
+                uriBuilder.Path = path.Paths [ 0 ];
+                streamingUrls.Add ( uriBuilder.ToString () );
+
+            }
 
             return streamingUrls;
 
