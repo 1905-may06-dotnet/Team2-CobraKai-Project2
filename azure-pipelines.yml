@@ -33,15 +33,15 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: $(pathtosolution)
 
-- script: dotnet test 
-    --configuration $(buildConfiguration)
-    --logger trx
-    --no-build
-    /p:CollectCoverage=true
-    /p:CoverletOutputFormat=opencover
-    /p:CoverletOutput='$(Build.ArtifactStagingDirectory)/coverage/'
-  workingDirectory: $(pathtosolution)
-  displayName: 'dotnet test'
+#- script: dotnet test 
+#    --configuration $(buildConfiguration)
+#    --logger trx
+#    --no-build
+#    /p:CollectCoverage=true
+#    /p:CoverletOutputFormat=opencover
+#    /p:CoverletOutput='$(Build.ArtifactStagingDirectory)/coverage/'
+#  workingDirectory: $(pathtosolution)
+#  displayName: 'dotnet test'
 
 - task: DotNetCoreCLI@2
   inputs:
