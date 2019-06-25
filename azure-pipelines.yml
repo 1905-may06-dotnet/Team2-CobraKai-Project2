@@ -21,12 +21,14 @@ steps:
   inputs:
     command: 'install'
     workingDir: $(pathtoangular)
+  displayName: 'Install NPM'
 
 - task: Npm@1
   inputs:
     command: 'custom'
     workingDir: '$(pathtoangular)'
-    customCommand: 'build'
+    customCommand: 'run-script build'
+  displayName: 'Build NPM'
 
 - task: PublishBuildArtifacts@1
   inputs:
