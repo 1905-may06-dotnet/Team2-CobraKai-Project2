@@ -25,7 +25,7 @@ const httpOptions = {
 export class SongService {
 
 
-  private basePath: string = "https://localhost:5001/api/";
+  private basePath: string = "http://musicjournalapi.azurewebsites.net/api/";
   private songDocument: string ="song/";
   private songDocumentPath : string = this.basePath + this.songDocument;
 
