@@ -1,6 +1,11 @@
-import { ViewChild, Component, OnInit, AfterViewInit } from '@angular/core';
+import { ViewChild, Component, OnInit, AfterViewInit, Pipe, PipeTransform } from '@angular/core';
 import { SongComponent } from '../song/song.component';
 import * as $ from 'jquery';
+import { SongService } from '../song.service';
+import { Song } from '../models/song';
+
+
+@Pipe({name: 'keys'})
 
 @Component({
   selector: 'app-playlist',
@@ -11,6 +16,8 @@ import * as $ from 'jquery';
 
 export class PlaylistComponent implements OnInit, AfterViewInit {
 
+
+
   show : string = "";
 
   ngAfterViewInit(): void {
@@ -20,10 +27,32 @@ export class PlaylistComponent implements OnInit, AfterViewInit {
 
    @ViewChild(SongComponent, {static: false}) child !: SongComponent;
 
-  constructor() { }
+  constructor(private songService: SongService) {
+
+    this.loadSongs();
+   }
+
+   songs : Song[] = [];
 
   ngOnInit() {
 
+  }
+
+  loadSongs(){
+
+    this.songService.GetSongs().then((result)=>{
+
+      if(result != null){
+
+          for(var i in result){
+
+            let song = Object.assign(new Song(), result [i])
+
+            console.log(song);
+            this.songs.push(song);
+          }
+      }
+    });
   }
 
   toggleAccordion() {
@@ -34,5 +63,7 @@ export class PlaylistComponent implements OnInit, AfterViewInit {
       }, 100).css('opacity', 1);
     });
   }
+
+
 
 }

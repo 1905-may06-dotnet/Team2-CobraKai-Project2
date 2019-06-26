@@ -24,44 +24,43 @@ export class SongComponent implements OnInit {
       FilePath: ""
   }
 
+    file : File;
 
-  uploadForm: FormGroup;
+
 
   ngOnInit() {
 
-    this.uploadForm = this.formBuilder.group({
-      profile: ['']
-    });
   }
 
   onAddSong (){
 
-    this.songService.GetSong(this.song).then((result)=>{
+    const formData = new FormData();
 
-      if(result == null){
+    formData.append('file',this.file, this.file.name) ;
+    this.songService.AddSongStorage(formData);
 
-        this.songService.AddSongReference(this.song);
-        const formData = new FormData();
-        formData.append('file', this.uploadForm.get('profile').value);
-
-        this.songService.AddSongStorage(formData);
-
-      }else {
-        alert("The song exist");
-      }
-
-    });
+    // this.songService.GetSong(this.song).then((result)=>{
 
 
+    //   if(result == null){
 
+    //     this.songService.AddSongReference(this.song);
+    //     const formData = new FormData();
+    //     formData.append('file', this.uploadForm.get('profile').value);
 
+    //     this.songService.AddSongStorage(formData);
+
+    //   }else {
+    //     alert("The song exist");
+    //   }
+
+   // });
   }
 
   onFileChange(event) {
 
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.uploadForm.get('profile').setValue(file);
+        this.file = <File>event.target.files[0];
     }
 
   }

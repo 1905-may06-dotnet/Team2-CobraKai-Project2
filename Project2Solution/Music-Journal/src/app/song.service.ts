@@ -1,20 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Person } from './models/person';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Song } from './models/song';
 import {HttpParams} from  "@angular/common/http";
 
 
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json; charset=utf-8',
-    'Authorization': 'my-auth-token',
-  }) };
-
   let headers={
     headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'enctype':'multipart/form-data'
     })
 }
 
@@ -26,8 +19,11 @@ export class SongService {
 
 
   private basePath: string = "http://musicjournalapi.azurewebsites.net/api/";
+  private storageBasePath: string = "https://localhost:5001/api/";
+  private storageDocument : string = "storage";
   private songDocument: string ="song/";
   private songDocumentPath : string = this.basePath + this.songDocument;
+  private storageDocumentPath : string = this.storageBasePath + this.storageDocument;
 
   constructor(private http: HttpClient) { }
 
@@ -40,19 +36,34 @@ export class SongService {
     return this.http.get(this.songDocumentPath + song.Title + "/" + song.Artist ).toPromise();
   }
 
+  GetSongStreamLinks(songTitle : string){
+
+    let params : HttpParams = new  HttpParams();
+    params.set('title', songTitle);
+
+    return this.http.get(this.storageDocumentPath + songTitle).toPromise();
+  }
+
   AddSongReference(song : Song){
 
     console.log("Song Title: " + song.Title);
 
     this.http.post(this.songDocumentPath, song, headers)
       .subscribe(resp => {
-      console.log("response %o, ", resp);
+     // console.log("response %o, ", resp);
     });
   }
 
-  AddSongStorage(song : any){
+  GetSongs() {
+    return this.http.get(this.songDocumentPath).toPromise();
+  }
 
+  AddSongStorage(fileObject : FormData){
 
+    this.http.post(this.storageDocumentPath, fileObject)
+    .subscribe(resp => {
+    console.log("response %o, ", resp);
+  });
   }
 
 

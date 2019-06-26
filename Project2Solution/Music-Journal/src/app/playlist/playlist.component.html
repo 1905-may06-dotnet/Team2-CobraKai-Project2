@@ -20,7 +20,11 @@
       <div class= 'panel'>
         <div class= "pane">
           <div class="list">
-
+              <ul>
+                <li *ngFor="let song of songs">
+                  {{song.title}}
+                </li>
+              </ul>
           </div>
           <p (click)="show = !show">{{show ? 'hide' : 'show'}} + Add New Song </p>
         </div>
