@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
 using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -12,9 +11,8 @@ using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Project.Client;
 
-namespace Project.Client {
+namespace Prototype.Player.Azure {
 
     public class MediaServicesClient {
 
@@ -249,8 +247,6 @@ namespace Project.Client {
 
                 await container.GetBlockBlobReference ( Path.GetFileName ( FileToUpload ) ).UploadFromStreamAsync ( stream );
 
-                //await container.GetBlockBlobReference ( AssetName ).UploadFromStreamAsync ( stream );
-
                 Job job = await _client.Jobs.CreateAsync (
 
                     _configuration.ResourceGroup,
@@ -446,7 +442,7 @@ namespace Project.Client {
 
         }
 
-        public static Task < IAzureMediaServicesClient > Client { get { return ( Task < IAzureMediaServicesClient >)_client; } }
+        public static IAzureMediaServicesClient Client { get { return _client; } }
 
         public static Configuration Configuration { get { return _configuration; } }
 
