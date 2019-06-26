@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Project.Client;
 
-namespace Prototype.Player.Azure {
+namespace Project.Client {
 
     public class MediaServicesClient {
 
