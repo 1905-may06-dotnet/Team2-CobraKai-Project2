@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace Prototype.Player.Azure {
+namespace Project.Client {
 
     public class MediaServicesClient {
 
