@@ -13,10 +13,10 @@ namespace Tests {
             try {
 
 
-                if ( Prototype.Player.Azure.MediaServicesClient.Client == null )
-                    await Prototype.Player.Azure.MediaServicesClient.Connect ();
+                if ( Project.Client.MediaServicesClient.Client == null )
+                    await Project.Client.MediaServicesClient.Connect ();
 
-                await Prototype.Player.Azure.MediaServicesClient.ResetMediaService ();
+                await Project.Client.MediaServicesClient.ResetMediaService ();
 
                 Thread.Sleep ( 30000 );
 
@@ -31,10 +31,10 @@ namespace Tests {
 
             try {
 
-                if ( Prototype.Player.Azure.MediaServicesClient.Client == null )
-                    await Prototype.Player.Azure.MediaServicesClient.Connect ();
+                if ( Project.Client.MediaServicesClient.Client == null )
+                    await Project.Client.MediaServicesClient.Connect ();
 
-                await Prototype.Player.Azure.MediaServicesClient.Upload ( @"C:\Users\jmau0\Desktop\Revature\Week 6\Prototype.Player\bin\Debug\netcoreapp2.2\Fade into you (Faithless).mp3" );
+                await Project.Client.MediaServicesClient.Upload ( @"C:\Users\jmau0\Desktop\Revature\Week 6\Prototype.Player\bin\Debug\netcoreapp2.2\Fade into you (Faithless).mp3" );
 
                 Thread.Sleep ( 30000 );
 
@@ -49,10 +49,10 @@ namespace Tests {
 
             try {
 
-                if ( Prototype.Player.Azure.MediaServicesClient.Client == null )
-                    await Prototype.Player.Azure.MediaServicesClient.Connect ();
+                if ( Project.Client.MediaServicesClient.Client == null )
+                    await Project.Client.MediaServicesClient.Connect ();
 
-                await Prototype.Player.Azure.MediaServicesClient.Upload ( 
+                await Project.Client.MediaServicesClient.Upload ( 
                 
                     File.OpenRead (
 
@@ -77,10 +77,10 @@ namespace Tests {
 
             try {
 
-                if ( Prototype.Player.Azure.MediaServicesClient.Client == null )
-                    await Prototype.Player.Azure.MediaServicesClient.Connect ();
+                if ( Project.Client.MediaServicesClient.Client == null )
+                    await Project.Client.MediaServicesClient.Connect ();
 
-                await Prototype.Player.Azure.MediaServicesClient.Download ( @"C:\Users\jmau0\Desktop\SuperSpecialSongs\Fade into you (Faithless).mp3" );
+                await Project.Client.MediaServicesClient.Download ( @"C:\Users\jmau0\Desktop\SuperSpecialSongs\Fade into you (Faithless).mp3" );
 
                 Thread.Sleep ( 30000 );
 
@@ -95,8 +95,8 @@ namespace Tests {
 
             try {
 
-                if ( Prototype.Player.Azure.MediaServicesClient.Client == null )
-                    await Prototype.Player.Azure.MediaServicesClient.Connect ();
+                if ( Project.Client.MediaServicesClient.Client == null )
+                    await Project.Client.MediaServicesClient.Connect ();
 
                 
 
@@ -113,10 +113,10 @@ namespace Tests {
 
                 var result = "Streaming Urls - \n";
 
-                if ( Prototype.Player.Azure.MediaServicesClient.Client == null )
-                    await Prototype.Player.Azure.MediaServicesClient.Connect ();
+                if ( Project.Client.MediaServicesClient.Client == null )
+                    await Project.Client.MediaServicesClient.Connect ();
 
-                var output = await Prototype.Player.Azure.MediaServicesClient.StreamingUri ( "Fade into you (Faithless).mp3" );
+                var output = await Project.Client.MediaServicesClient.StreamingUri ( "Fade into you (Faithless).mp3" );
             
                 Console.WriteLine ( "\n\nStreaming Urls -" );
 
