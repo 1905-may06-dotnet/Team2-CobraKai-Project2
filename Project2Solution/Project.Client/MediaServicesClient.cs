@@ -1,16 +1,20 @@
-﻿using Microsoft.Azure.Management.Media;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
-using Microsoft.WindowsAzure.Storage.Blob;
-using System;
-using System.Collections.Generic;
-using System.IO;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Project.Client;
 
-namespace Project.Client {
+namespace Prototype.Player.Azure {
 
     public class MediaServicesClient {
 

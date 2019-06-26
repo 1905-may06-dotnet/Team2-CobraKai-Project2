@@ -16,9 +16,7 @@ import { Song } from '../models/song';
 
 export class PlaylistComponent implements OnInit, AfterViewInit {
 
-
-
-  show : string = "";
+  show : boolean = false;
 
   ngAfterViewInit(): void {
 

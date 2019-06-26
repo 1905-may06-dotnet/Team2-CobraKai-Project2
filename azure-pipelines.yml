@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   pathtosolution: 'Project2Solution'
-  #pathtoproject: 'Project2Solution/Music-Journal'
+  pathtoangular: 'Project2Solution/Music-Journal'
   pathtoapi: 'Project2Solution/Project.Client'
 
 steps:
@@ -32,7 +32,6 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: $(pathtosolution)
-
 - script: dotnet test 
     --configuration $(buildConfiguration)
     --logger trx
@@ -42,11 +41,6 @@ steps:
     /p:CoverletOutput='$(Build.ArtifactStagingDirectory)/coverage/'
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
-
-- task: DotNetCoreCLI@2
-  inputs:
-      command: 'publish'
-      publishWebProjects: true
 
 - task: SonarCloudAnalyze@1
 
@@ -61,19 +55,15 @@ steps:
     searchFolder: '$(Build.ArtifactStagingDirectory)/test'
   displayName: 'Publish Test Results '
 
-#- task: AzureRmWebAppDeployment@4
-#  inputs:
-#    ConnectionType: 'AzureRM'
-#    azureSubscription: 'connectiondc'
-#    appType: 'webApp'
-#    WebAppName: '' #to add
-#    packageForLinux: '$(System.DefaultWorkingDirectory)/$(pathtoproject)/**/*.zip'
-
 - task: DotNetCoreCLI@2
   inputs:
    command: publish
-   publishWebProjects: True
+   publishWebProjects: false
    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-   zipAfterPublish: True
+   projects: '$(pathtoapi)/*.csproj'
 
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

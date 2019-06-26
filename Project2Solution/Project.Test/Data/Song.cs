@@ -17,7 +17,7 @@ namespace Project.Test
                 Title = "Encore",
                 Artist = "Linkin Park",
                 Genre = "Rock",
-                Size = 3.45M,
+                Size = "3.45",
                 Length = "3.7",
                 ReleaseDate = "1993",
                 FilePath = "audio/file"
@@ -64,7 +64,7 @@ namespace Project.Test
             {
                 songId = i.Id;
             }
-            Project.Domain.Song song = repo.GetSongByTitle("Encore");
+            Project.Domain.Song song = repo.GetSongByTitle("Encore", "Linkin Park");
             Assert.AreEqual(song.Id, songId);
         }
 
@@ -84,7 +84,7 @@ namespace Project.Test
                 Title = "Encore",
                 Artist = "Linkin Park",
                 Genre = "Rock",
-                Size = 3.45M,
+                Size = "3.45",
                 Length = "3.7",
                 ReleaseDate = "1993",
                 FilePath = "audio/file"

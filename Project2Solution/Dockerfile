@@ -36,21 +36,29 @@ RUN dotnet build ../Project.Client/*.csproj --no-restore -c Release
 
 RUN dotnet publish ../Project.Client/*.csproj -c Release -o out
 
-#FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS deploy
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS ConsumeAPI
 
-#WORKDIR /app
+WORKDIR /app
 
-#EXPOSE 80
-#EXPOSE 443 
+COPY ConsumeAPI/ ../ConsumeAPI
 
-#COPY --from=[insert project to deploy]
+COPY --from=Project.Client ./Project.Client/ ../Project.Client
 
-#CMD [ "dotnet", "[select .dll to deploy]" ]
+RUN dotnet restore ../ConsumeAPI/*.csproj
 
-#to update for future added projects
+RUN dotnet build ../ConsumeAPI/*.csproj --no-restore -c Release
 
-#use the following commands:
-#dotnet build
-#dotnet publish -o out (TODO: create out folders)
+RUN dotnet publish ../ConsumeAPI/*.csproj -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS deploy
+
+WORKDIR /app
+
+EXPOSE 80
+EXPOSE 443 
+
+COPY --from=Project.Client Project.Client/out/ ./
+
+CMD [ "dotnet", "Project.Client.dll" ]
 
 
