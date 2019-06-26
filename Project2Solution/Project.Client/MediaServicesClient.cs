@@ -18,11 +18,11 @@ namespace Prototype.Player.Azure {
 
     public class MediaServicesClient {
 
-        private static Configuration _configuration;
-        private static ClientCredential _clientCredential;
-        private static ServiceClientCredentials _serviceClientCredentials;
+        private static Configuration             _configuration;
+        private static ClientCredential          _clientCredential;
+        private static ServiceClientCredentials  _serviceClientCredentials;
         private static IAzureMediaServicesClient _client;
-        private static Transform _encoding;
+        private static Transform                 _encoding;
 
         /// <summary>
         /// Creates credentials for the Azure Media Service based on credentials from Configuration (appsettings.json)
@@ -248,6 +248,8 @@ namespace Prototype.Player.Azure {
                 var container = new CloudBlobContainer ( new Uri ( response.AssetContainerSasUrls [ 0 ] ) );
 
                 await container.GetBlockBlobReference ( Path.GetFileName ( FileToUpload ) ).UploadFromStreamAsync ( stream );
+
+                //await container.GetBlockBlobReference ( AssetName ).UploadFromStreamAsync ( stream );
 
                 Job job = await _client.Jobs.CreateAsync (
 
