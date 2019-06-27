@@ -3,7 +3,7 @@ Team members: Daniel Coombs (lead), Michael Lee, Fred Brume, John Maurer
 
 ## Scope: 
 
-The Cobra Kai application is a distributed file sharing system marketed as a music media platform as a service which allows users to store and manage their digitial audio media in the cloud.  The platform offers cloud storage of a customers digital media as well as the means to stream it after authenticating into the service.  Clients can organize their libraries as they see fit and even create playlists that they themselves orchestrate opposed to services like youtube that do so based on viewer history.  Tying the client to an authentication protocol also protects stakeholders from the legal environment, protecting them from copyright infringement and mitigating unauthorized distribution and peer-to-peer file sharing.  
+The Music Journal application is a distributed file sharing system marketed as a music media platform as a service which allows users to store and manage their digitial audio media in the cloud.  The platform offers cloud storage of a customers digital media as well as the means to stream it after authenticating into the service.  Clients can organize their libraries as they see fit and even create playlists that they themselves orchestrate opposed to services like youtube that do so based on viewer history.  Tying the client to an authentication protocol also protects stakeholders from the legal environment, protecting them from copyright infringement and mitigating unauthorized distribution and peer-to-peer file sharing.  
 
 ## Features:
 
